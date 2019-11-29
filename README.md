@@ -1,8 +1,12 @@
 # Documentation
+
 ##### Table of Contents  
 [Getting Started](#gettingStarted)
+
 [Download the App](#download)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[System Requirements](#sysReq)  
+
 [Support](#support) 
 
 <a name="gettingStarted"/>
@@ -54,4 +58,5 @@
 ## Troubleshooting
 
 <a name="support"/>
+
 ## Support
