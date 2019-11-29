@@ -23,13 +23,13 @@
 
 ### Register Your Copy
 
-## Demo vs Enterprise Version
+## Free vs Enterprise Version
 
-| Feature  | Demo Version | Enterprise Version |
+| Feature  | Free Version | Enterprise Version |
 | ------------- | ------------- | -----------------|
 | Unlimited sites |  ✅ |  ✅ |
 | Unlimited jobs |  ✅ |  ✅ |
-| Support large lists archiving (over 5000 Threshold)   |  ✅ |  ✅ |
+| Support large lists archiving/exporting (over 5000 Threshold)   |  ✅ |  ✅ |
 | Modify list items after archiving |  ✅ |  ✅ |
 | Delete list items after archiving |  ✅ |  ✅ |
 | Download attachments |  ✅ |  ✅ |
@@ -66,6 +66,11 @@
 #### Schedule configuration
 
 ## Validate config file
+To validate a config file run the app with the `-p` parameter:
+```sh
+> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -p
+```
+
 
 ## Run in Testing Mode
 
