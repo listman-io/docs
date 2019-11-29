@@ -6,12 +6,15 @@
 [Support](#support) 
 
 <a name="gettingStarted"/>
+
 ## Getting Started
 
 <a name="download"/>
+
 ## Download the App
 
 <a name="sysReq"/>
+
 ### System Requirements
 
 ### Register Your Copy
