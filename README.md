@@ -29,17 +29,19 @@
 | ------------- | ------------- | -----------------|
 | Unlimited sites |  ✅ |  ✅ |
 | Unlimited jobs |  ✅ |  ✅ |
-| Support large lists archiving/exporting (over 5000 Threshold)   |  ✅ |  ✅ |
-| Modify list items after archiving |  ✅ |  ✅ |
-| Delete list items after archiving |  ✅ |  ✅ |
+| Support large lists archiving/exporting (over 5000 threshold)   |  ✅ |  ✅ |
+| Modify list items after archiving/export |  ✅ |  ✅ |
+| Delete list items after archiving/export |  ✅ |  ✅ |
 | Download attachments |  ✅ |  ✅ |
 | Run as CLI |  ✅ |  ✅ |
 | Run as Windows Service |  ✅ |  ✅ |
 | Cron Scheduler |  ✅ |  ✅ |
 | Email Support |  ✅ |  ✅ |
 | Priority Support |  ❌ |  ✅ |
-| Records Archiving limit per run |  50 |  ♾️, No Limit |
-| Cost |  Free |  $69 / month |
+| Records archiving/export limit per run |  50 |  ♾️, No Limit |
+| Cost |  Free |  $69 per month / per SharePoint instance |
+
+#### What is SharePoint Instance?
 
 ### How to Register Enterprise Version
 
@@ -70,7 +72,6 @@ To validate a config file run the app with the `-p` parameter:
 ```sh
 > listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -p
 ```
-
 
 ## Run in Testing Mode
 
