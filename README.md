@@ -25,6 +25,24 @@
 
 ## Demo vs Enterprise Version
 
+| Feature  | Demo Version | Enterprise Version |
+| ------------- | ------------- | -----------------|
+| Unlimited sites |  ✅ |  ✅ |
+| Unlimited jobs |  ✅ |  ✅ |
+| Support large lists archiving (over 5000 Threshold)   |  ✅ |  ✅ |
+| Modify list items after archiving |  ✅ |  ✅ |
+| Delete list items after archiving |  ✅ |  ✅ |
+| Download attachments |  ✅ |  ✅ |
+| Run as CLI |  ✅ |  ✅ |
+| Run as Windows Service |  ✅ |  ✅ |
+| Cron Scheduler |  ✅ |  ✅ |
+| Email Support |  ✅ |  ✅ |
+| Priority Support |  ❌ |  ✅ |
+| Records Archiving limit per run |  50 |  ♾️, No Limit |
+| Cost |  Free |  $69 / month |
+
+### How to Register Enterprise Version
+
 ## Create SharePoint app (app-only principal)
 
 ## Configuration
