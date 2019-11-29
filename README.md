@@ -79,6 +79,22 @@ To validate a config file run the app with the `-p` parameter:
 
 ## Run as Windows Service
 
+Install listman-cli as Windows Service:
+```
+sc create ListmanService binPath= "C:\Work\listman.cli.release\listman-cli.exe -c 'C:\Work\listman.cli.release\Config\listman.sharepoint.json'"
+```
+
+Start the service:
+```
+sc start ListmanService
+```
+
+Delete the service
+
+```
+sc delete ListmanService
+```
+
 ## Troubleshooting
 
 <a name="support"/>
