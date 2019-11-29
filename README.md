@@ -2,7 +2,6 @@
 
 ##### Table of Contents  
 [Getting Started](#gettingStarted)
-
 [Download the App](#download)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[System Requirements](#sysReq)  
