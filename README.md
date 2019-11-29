@@ -102,19 +102,34 @@ You could combine test mode `-t` and `-v` verbose parameters for detailed loggin
 ## Run as Windows Service
 
 ### Install Service
-Install listman-cli as Windows Service:
+Assuming the installation path to listman.cli is `C:\Work\listman.cli.release\` use that command to install listman-cli as a Windows Service with name `ListmanService`:
 ```
-sc create ListmanService binPath= "C:\Work\listman.cli.release\listman-cli.exe -c 'C:\Work\listman.cli.release\Config\listman.sharepoint.json'"
+sc create ListmanService binPath= "C:\Work\listman.cli.release\listman-cli.exe"
 ```
 
 ### Start Service
-Start the service:
+1. Go to Services
+2. Right click on ListmanService -> Properties
+3. Type
 ```
-sc start ListmanService
+-c C:\Work\listman.cli.release\Config\listman.sharepoint.json -v
+```
+into the `Start Parameters` field
+4. Click Start
+
+Alternatively use the `sc.exe` command:
+```
+sc start ListmanService -v -c C:\Work\listman.cli.release\Config\listman.sharepoint.json
+```
+### Stop Service
+To stop the service use
+
+```
+sc stop ListmanService
 ```
 
 ### Delete Service
-Delete the service
+To delete the service use
 
 ```
 sc delete ListmanService
