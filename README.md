@@ -1,9 +1,17 @@
 # Documentation
+##### Table of Contents  
+[Getting Started](#gettingStarted)
+[Download the App](#download)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[System Requirements](#sysReq)  
+[Support](#support) 
 
+<a name="gettingStarted"/>
 ## Getting Started
 
-## Download the app
+<a name="download"/>
+## Download the App
 
+<a name="sysReq"/>
 ### System Requirements
 
 ### Register Your Copy
@@ -42,4 +50,5 @@
 
 ## Troubleshooting
 
+<a name="support"/>
 ## Support
