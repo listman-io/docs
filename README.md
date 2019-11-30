@@ -12,6 +12,18 @@
 <a name="gettingStarted"/>
 
 ## Getting Started
+**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any Sharepoint lists of any size without infamous 5000 view limitation.
+
+In short, Listman.io will allow your company run business more efficiently and:
+
+1. Save money on development (around one month of developer cost), application support and maintenance 
+2. Avoid 5000 view and search limitation for large lists in Sharepoint by removing historical data
+3. Reduce hosting costs by offloading attachments to filesystem or cloud storage
+4. Improve overall system speed and responsiveness 
+5. Comply and implement organization’s data retention policies
+6. Meet regulatory compliance without shortcuts
+7. Back up old data
+8. Run archiving in no time (around 30 mins after simple configuration)
 
 <a name="download"/>
 
