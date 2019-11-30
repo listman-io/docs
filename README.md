@@ -16,24 +16,43 @@
 
 In short, Listman.io will allow your company run business more efficiently and:
 
-1. Save money on development (around one month of developer cost), application support and maintenance 
-2. Avoid 5000 view and search limitation for large lists in Sharepoint by removing historical data
-3. Reduce hosting costs by offloading attachments to filesystem or cloud storage
+1. Save money on custom SharePoint development (around one-two months of a developer salary), application support and maintenance 
+2. Avoid 5000 view and search limitation threshold for the large lists in SharePoint by removing historical data
+3. Reduce hosting costs by offloading unused attachments into the file system or any cloud storage
 4. Improve overall system speed and responsiveness 
 5. Comply and implement organization’s data retention policies
 6. Meet regulatory compliance without shortcuts
-7. Back up old data
-8. Run archiving in no time (around 30 mins after simple configuration)
+7. Back up old data for the peace of mind
+8. And finally, configure and run archiving or exporting procedures in no time (around 30 mins after simple configuration)
 
 <a name="download"/>
 
 ## Download the App
+It's easy to start using Listman.io application and run your first archiving procedure. For that:
+
+1. Go to [www.listman.io](https://www.listman.io)
+2. Sign In with your Microsoft Account. After succesfull Sign IN you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
+3. Click on Download the Listman.io
+
+Alternatively you could download the previous versions of the Listman.io application using that [link](https://github.com/listman-io/docs/packages). 
+
+**Note:** even if the app is downloaded from the Github you still will need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to run the app to obtain your licence information.
+
+Congratulations! Now you are ready to configure your first archiving or export procedure.
 
 <a name="sysReq"/>
 
-### System Requirements
+### System Requirements And Prerequisites
+Before processing to the next step make sure your system complies with following system requirements:
 
-### Register Your Copy
+1. You have Windows 7/8/10/Server machine. For simplicity we will referencing to that machine as the **application server**.
+2. You have .NET Framework 4.5 installed on the application server
+3. Your application server is connected to internet. It's a very important point. Without the internet connection the Listman.io app wouldn't be able to ferity your application licence and fill fail to run.
+4. You have some knowledge of JSON files as well as usage Windows Command Line and Windows Services.
+
+### Get Your FREE Licence Details
+
+
 
 ## Free vs Enterprise Version
 
