@@ -12,7 +12,7 @@
 <a name="gettingStarted"/>
 
 ## Getting Started
-**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold).
+**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) into **CSV** files.
 
 In short, Listman.io will allow your company to run business more efficiently and:
 
@@ -23,9 +23,17 @@ In short, Listman.io will allow your company to run business more efficiently an
 5. Comply and implement organization’s data retention policies
 6. Meet regulatory compliance without shortcuts
 7. Back up old data for the peace of mind
+8. Transfer your lists data from SharePoint into any DB including MS SQL Server or Azure Database
 8. And finally, configure and run archiving or exporting procedures in no time (around 30 mins after simple configuration)
 
-<a name="download"/>
+### Why CSV?
+Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely archive and export SharePoint lists data into the CSV format. We use CSV files as a final data destination because:
+
+* CSV is understood by almost every piece of software on the planet (past and present)
+* CSV is more human-readable than XML, JSON formats and supported natively by MS Excel
+* CSV could be used as a source of import for almost any relational, document and graph DB including MS SQL Server and Microsoft Azure Database
+
+So if you looking to archive, export or migrate your SharePoint data into MS SQL Database you could use Listman.io in conjunction with other ETL tools (for example SSIS packages or SQL Server Import and Export Wizard) to easily accomplish your goal delegating SharePoint part to the Listman.io.
 
 <a name="sysReq"/>
 
@@ -37,6 +45,8 @@ Before processing to the next step make sure your system complies with following
 3. Your application server is connected to the Internet. It's a very important point. Without the internet connection the Listman.io app wouldn't be able to ferity your application licence and will fail to run archiving or export procedures.
 4. You have some knowledge of JSON files as well as usage Windows Command Line and Windows Services.
 5. You have SharePoint 2013/2016/2019 or SharePoint Online.
+
+<a name="download"/>
 
 ## Download the App
 It's easy to start using Listman.io application and run your first archiving procedure. For that:
@@ -76,9 +86,7 @@ Look at the table below to choose between Free or Enterprise plans.
 | Records archiving/export limit per run |  50 |  ♾️, No Limit |
 | Cost |  Free |  $69 per month / per SharePoint instance |
 
-### How to Register Enterprise Version
-
-## Get Your Free Licence Details
+### Get Your Free Licence Details
 
 To get your free plan details:
 1. Go to [www.listman.io](https://www.listman.io)
@@ -87,6 +95,24 @@ To get your free plan details:
  * Your Microsoft Account `email`
  * Host name: `demo`
  * AppKey: `get it from subscription`
+
+Now we ready to create your first SharePoint Application (also known as Application Context or App) that will be used to authorize Listman.io console application or Windows service against your Sharepoint instance. 
+
+### How to Register Enterprise Version
+
+To subscribe to Enterprise plan:
+1. Go to [www.listman.io](https://www.listman.io)
+2. Sign In with your Microsoft Account email. After Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard). Note your Microsoft Account email. You'll need it on the configuration step.
+3. Go to Billing details section and add details of your credit or debit card. Make sure there is no errors.
+> Note: we never store your billing detail on our servers. All the billing details processed only by Stripe. 
+3. Once billing details are added, go to Subscriptions section
+4. Click on Add Subscription
+5. Type name of the new SharePoint `host` you want to archive or export data from. If you host is accessible only by IP address or localhost type them as they are. **Do not type port**.
+6. Click on Save. Now your Subscription is created but not yet activated.
+7. Check your details, note generated `AppKey` and click on Active. Now your subscription and you could use `host` and `appKey` in your config file (see section...).
+8. You could change you
+
+> Once subscription is activated your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
 
 Now we ready to create your first SharePoint Application (also known as Application Context or App) that will be used to authorize Listman.io console application or Windows service against your Sharepoint instance. 
 
