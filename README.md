@@ -510,8 +510,21 @@ Once list record is archived or exported you may want to delete it or modify som
 **Example**:
 ```
 recordAction:{
-  remove: true,
-  modify: null
+  remove: false,
+  modify: [
+    {
+      columnName: "Archived",
+      setBoolValue: true,
+      setStrValue: null,
+      setCurrentDateValue: null  
+    },
+    {
+      columnName: "ArchivedDate",
+      setBoolValue: null,
+      setStrValue: null,
+      setCurrentDateValue: true
+    }
+  ]
 },
 ```
 
