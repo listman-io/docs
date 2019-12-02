@@ -393,7 +393,33 @@ logTo:{
 
 Let's say you run archiving for two large list nearly in the same time. When log into a simple txt file logging messages from diffrent Archiving Jobs can't be easily grouped and analised. On the other hand CSV file could be opened in Microsoft Excel and filtered to display the log messages just from a particular Job or Action (download, delete, edit). It's especially usefull if you have multiple archiving jobs running at the same day.
 
-### Archive Jobs configuration
+### Archive Jobs List
+
+Listman.io supports running multiple archiving jobs at the same time or by schedule. You have to add all the job configurations into the `archiveJobs` section of the config file:
+```
+archiveJobs: [
+ {
+  ...Job #1 config
+ }, {
+  ...Job #2 config
+ }
+]
+```
+### Archive Job Configuration
+Listman.io executes archive jobs. An archive job configuration may contain the following properties and subsections:
+
+| Field/Subsection  | Description | Example |
+| ------------- | ------------- | -----------------|
+| `name` | Name of the job. Used for logging.  | Customers Archiving - May 2019 |
+| `list` | The title of a SharePoint list to archive | `customers` |
+| `exportColumns` | List of colums for archiving or export. Note `ID` and `GUID` are mandatory to be in the list.  | `["ID", "GUID", "Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
+| `exportAttachments` | Do we need to export attachments as well (true/false) | `true` or `false` |
+| `batchSize` | When Listman.io gets list data from Sharepoint lists in batches. Batch is a set of N records that is filtered for archiving or export and transfered into CSV file. The default value is 500. Read more about how to set `batchSize` below. | 500 |
+| `filterRecordsBy` | You could specify what list records to archive or export using a simple equality criteria. This subscection is used to filter specific list records for archiving or export. | See [Filter By configuration]() |
+| `recordAction` | You may want to delete or mofigy some fields of a record from the list after archiving. This subscection is used to configure post archive action for the record. | See [Record Action configuration]() |
+| `archiveTo` | This section is used to specify properties of the archiving or export output files like file path, adding header and file write modes like `append` or `rewrite` | See [Archive To configuration]() |
+
+#### Note About Batch Size
 
 #### Export Columns configuration
 
