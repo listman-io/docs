@@ -412,16 +412,18 @@ Listman.io executes archive jobs. An archive job configuration may contain the f
 | ------------- | ------------- | -----------------|
 | `name` | Name of the job. Used for logging.  | Customers Archiving - May 2019 |
 | `list` | The title of a SharePoint list to archive | `customers` |
-| `exportColumns` | List of colums for archiving or export. Note `ID` and `GUID` are mandatory to be in the list.  | `["ID", "GUID", "Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
+| `exportColumns` | List of column titles for archiving or export as JSON array of strings | `["ID", "GUID", "Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
 | `exportAttachments` | Do we need to export attachments as well (true/false) | `true` or `false` |
-| `batchSize` | When Listman.io gets list data from Sharepoint lists in batches. Batch is a set of N records that is filtered for archiving or export and transfered into CSV file. The default value is 500. Read more about how to set `batchSize` below. | 500 |
+| `batchSize` | When Listman.io gets list data from Sharepoint lists it iterates through the list's data in batches or pages. The default `batchSize` value is 500. We recommend to keep this value as 500 or lower if you have slow or unstable Internet connection | 500 |
 | `filterRecordsBy` | You could specify what list records to archive or export using a simple equality criteria. This subscection is used to filter specific list records for archiving or export. | See [Filter By configuration]() |
 | `recordAction` | You may want to delete or mofigy some fields of a record from the list after archiving. This subscection is used to configure post archive action for the record. | See [Record Action configuration]() |
 | `archiveTo` | This section is used to specify properties of the archiving or export output files like file path, adding header and file write modes like `append` or `rewrite` | See [Archive To configuration]() |
-
-#### Note About Batch Size
+| `schedule` | This section is used to specify job run schedule. Basically you could run jon immifiatelly after application launch or by schedule using cron syntax. | See [Cchedule configuration]() |
 
 #### Export Columns configuration
+`exportColumns` is a list of column titles for archiving or export as JSON array of strings. Note that `ID` and `GUID` are mandatory columns and have to be presented in the list.
+
+> Sharepoint list columns have three names: Title, Internal name and StaticName.  
 
 #### Filter By configuration
 
