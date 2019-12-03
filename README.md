@@ -3,11 +3,59 @@
 ##### Table of Contents  
 [Getting Started](#gettingStarted)
 
+[System Requirements](#sysReq)
+
 [Download the App](#download)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[System Requirements](#sysReq)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#sysReq)  
 
-[Support](#support) 
+[Free vs Enterprise Plan](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Your Free Plan Licence Details](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)  
+
+[Create SharePoint Application (for App-Only/Application Context)](#support) 
+
+[Test Connection to SharePoint Instance](#support) 
+
+[Run as Console App](#support) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#sysReq)   
+
+[Run as Windows Service](#support) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#sysReq)  
+
+[Configure Application](#support) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#sysReq) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Licence configuration](#sysReq)   
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive Job Configuration](#sysReq) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Export Columns configuration](#sysReq) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Filter By configuration](#sysReq) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Record Action configuration](#sysReq) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive To configuration](#sysReq) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Schedule configuration](#sysReq) 
+
+[Command Line Parameters](#support) 
+
+[Getting Help](#support) 
 
 <a name="gettingStarted"/>
 
@@ -26,7 +74,7 @@ In short, Listman.io will allow your company to run business more efficiently an
 8. Transfer or export lists data from SharePoint into any DB including MS SQL Server or Azure Database
 8. And finally, configure and run archiving or exporting procedures in no time without any custom development (around 30 mins after simple configuration)
 
-### Why CSV?
+### Why Archive/Export to CSV?
 Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
 
 * CSV is understood by almost every piece of software on the planet (past and present)
@@ -41,13 +89,13 @@ So if you are looking to archive, export or migrate your SharePoint data into Mi
 ## System Requirements And Prerequisites
 Before start let's make sure your system complies with the following system requirements:
 
-1. Listman.io is a Windows application that could be run as command line application or Windows Service. To run it you must have Windows 7/8/10/Server system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine when Listman.io is running as the **application server**.
-2. You have .NET Framework 4.5 installed on the application server. **Note:** .NET Core is not yet supported*.
-3. Your application server is connected to the Internet. Without the internet connection the Listman.io app wouldn't be able to verify your application licence and will fail to run archiving or export procedures.
-4. Ideally you have to have some knowledge of JSON files as well as usage Windows Command Line and Windows Services.
-5. You have SharePoint 2013/2016/2019 or SharePoint Online.
+1. You have SharePoint 2013/2016/2019 or SharePoint Online.
+2. Listman.io is a Windows application that could be run as command line application or Windows Service. To run it you must have Windows 7/8/10/Server system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine when Listman.io is running as the **application server**.
+3. You have .NET Framework 4.5 installed on the application server. **Note:** .NET Core is not yet supported*.
+4. Your application server is connected to the Internet. Without the internet connection the Listman.io app wouldn't be able to verify your application licence and will fail to run archiving or export procedures.
+5. Ideally you have to have some knowledge of JSON files, usage of Windows Command Line and Windows Services, namely `sc` command.
 
-> **\*What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
+> **\* What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
 
 <a name="download"/>
 
@@ -105,7 +153,6 @@ To run the Listman.io application for the first time you have to know your *lice
 * SignIn email (like `peter.pan@gmail.com`)
 * SharePoint host (like `demo`, `listman.sharepoint.com` or `localhost`)
 * AppKey (like `231231412`)
-
 
 To get your Free Plan licence details:
 1. Go to [www.listman.io](https://www.listman.io)
