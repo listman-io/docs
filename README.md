@@ -2,9 +2,7 @@
 
 ##### Table of Contents  
 [Getting Started](#Getting-Started)
-
 [System Requirements](#System-Requirements-And-Prerequisites)
-
 [Download the App](#Download-the-App)  
 
 [Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)  
