@@ -7,11 +7,11 @@
 
 [Download the App](#download)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#sysReq)  
-
 [Free vs Enterprise Plan](#sysReq)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Your Free Plan Licence Details](#sysReq)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#sysReq)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)  
 
@@ -103,7 +103,7 @@ Before start let's make sure your system complies with the following system requ
 It's easy to download a copy of the Listman.io application. For that:
 
 1. Go to [www.listman.io](https://www.listman.io)
-2. **Sign In** with your Microsoft Account. After succesfull Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
+2. **Sign In** with your Microsoft Account. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
 3. Click on Download the Listman.io
 
 Alternatively you could download the latest and all the previous versions of the Listman.io application using that [link](https://github.com/listman-io/docs/packages) from the Github. 
@@ -112,16 +112,7 @@ Alternatively you could download the latest and all the previous versions of the
 
 Congratulations! Now you are ready to configure your first archiving or export procedure. But first let's look at different Listman.io Plans.
 
-### What is Sharepoint Instance?
-Let's assume that your SharePoint instance is accessible by the URL address (also known as `siteUrl`): 
-
-```
-https://listman.sharepoint.com/
-```
-
-We will call that unique copy of SharePoint system **SharePoint Instance**. Your SharePoint Instance could have multiple sites and lists.
-
-### Free vs Enterprise Plans
+## Understanding of Free vs Enterprise Plans
 Listman.io is a **commercial software** but purposely designed to be run in a free mode for better learning and assessment experience. There is **no trial** so you have unlimited time to make sure Listman.io fits all your organization archiving or exporting needs. 
 
 We recommend you to start by running Listman.io using a Free Plan and try archive/export data from your Development or Staging SharePoint servers in order to familiarize yourself with the all application features. Once ready you could easily [subscribe to the Enterprise Plan]() and make the most from your archiving or exporting procedures.
@@ -145,6 +136,15 @@ Look at the table below to choose between Free or Enterprise plans.
 | Priority Support |  ❌ |  ✅ |
 | Records archiving/export per month |  100 |  ♾️, No Limit |
 | Cost |  Free |  $69 / per month / per SharePoint Instance |
+
+### Note on Sharepoint Instance
+Let's assume that your SharePoint instance is accessible by the URL address (also known as `siteUrl`): 
+
+```
+https://listman.sharepoint.com/
+```
+
+We will call that unique copy of SharePoint system **SharePoint Instance**. Your SharePoint Instance could have multiple sites and lists.
 
 ### Get Your Free Licence Details
 
@@ -253,10 +253,10 @@ In that example we specify scope as `Tenancy` so the `FullControl` right will be
 
 Great! Now we are ready to run Listman.io for the first time and make sure we could connect to your SharePoint instance.
 
-## Test Listman.io Connection
+## Quick Start
 1. Download the Listman.io application from your Dashboard or from Github if you haven't done it before.
 2. Unpack the archive into a folder from which you want to run the application. We will reference to this folder as the **app folder** for simplicity.
-3. Navigate to `{app folder}\Config\` using Windows Explorer or window Command Line
+3. Navigate to `{app folder}` using Windows Explorer or window Command Line
 4. Open the sample `config.json` file in any text editor of your choice
 5. Edit the `config.json` file. Change the fields to your specific values and **Save** the file:
 
@@ -274,14 +274,15 @@ connectTo: {
 ```
 6. Open Windows Command Line
 7. Navigate into the **app folder**, for that use the command:
-```
+```sh
 > cd /d {path_to_app_folder}
 ``` 
 8. Run the Listman.io app with the following command line parameters:
-```
-> listman-cli.exe -c '\Config\config.json' -l -s
+```sh
+> listman-cli.exe -p -l -s
 ``` 
 Where:
+* `-p` - parameter used to validate config file
 * `-l` - parameter used to validate user licence
 * `-s` - parameter used to test the connection to Sharepoint using `siteUrl` and App-Only credentials
 9. Check the results. Note that:
@@ -294,12 +295,84 @@ Where:
  Successfully connected to: https://yourcompany.sharepoint.com/
  ```
 
-Good job! Now we ready to configure our first archiving or export procedure.
+Good job! Now let's learn what are some different ways to run the Listman.io app and then we could go to the archiving configuration. 
+
+## Run as Console Application
+
+Before running Listman.io app against your production server we recommend you to always validate your config file and run the app in test mode.
+
+### Run in Testing Mode
+Testing mode allow you to run application, connect to the SharePoint instance and iterate through the list items but without actual archiving, deletion, modification and attachments download. It's designed to battle test your configuration as close as possible to the actual production run including logs creation where you could verify that all the expected records were correctly marked for archiving.
+
+To run application in testing mode run the app with the  `-p` and `-t` parameter:
+```sh
+> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -p -t
+```
+
+You could combine `-p`, `-t` and `-v` parameters for detailed logging:
+```sh
+> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -p -t -v
+```
+
+### Run the App
+To run Listman.io as a console app go to **Application Folder** and run:
+```sh
+> listman-cli.exe
+```
+By default application fill try to read its config file using the `{Application Folder}/config.json` path.
+
+You can also specify a path to your custom config file like using `-c` parameter:
+```sh
+> listman-cli.exe -c "Configs\comsco.sharepoint.com.json"
+```
+It's very useful if you have several config files for several SharePoint Instances.
+
+To produce detailed logging you may run the application with the `-v` (verbose) parameter like:
+```sh
+> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -v
+```
+
+## Run as Windows Service
+When you ready to move your archiving or export automation on to a new level you may want to run Listman.io as a Windows Service. 
+
+### Install Service
+Assuming the installation path to listman.cli is `C:\Work\listman.cli.release\` use that command to install listman-cli as a Windows Service with name `ListmanService`:
+```
+sc create ListmanService binPath= "C:\Work\listman.cli.release\listman-cli.exe"
+```
+
+### Start Service
+1. Go to Services
+2. Right click on ListmanService -> Properties
+3. Type
+```
+-c C:\Work\listman.cli.release\Config\listman.sharepoint.json -v
+```
+into the `Start Parameters` field
+4. Click Start
+
+Alternatively use the `sc.exe` command:
+```
+sc start ListmanService -v -c C:\Work\listman.cli.release\Config\listman.sharepoint.json
+```
+### Stop Service
+To stop the service use
+
+```
+sc stop ListmanService
+```
+
+### Delete Service
+To delete the service use
+
+```
+sc delete ListmanService
+```
 
 ## Configure Listman.io
-Let's have a look at the simple Listman.io config file. 
+Now after we learned how to run the Listman.io application let's have a look at the simple Listman.io config file. 
 
-In that example application will run one archiving job immediately after the application start and archive all the items from the "list2" on the https://listman.sharepoint.com/ SharePoint instance into the `list1_archive.csv` file. All the attachment will be downloaded into the `attachments` folder. 
+In that example will run one archiving job immediately after the application start and archive all the items from the "list2" on the https://listman.sharepoint.com/ SharePoint instance into the `list1_archive.csv` file. All the attachment will be downloaded into the `attachments` folder. 
 
 The config file has some other additional parameters including logging, what list columns to archive, **filtering condition** to decide which list items to archive and post action that has to be invoked against already archived record (like remove record or modify some of it's fields).
 
@@ -312,8 +385,8 @@ The config file has some other additional parameters including logging, what lis
   },
   connectTo: {
     siteUrl:"https://listman.sharepoint.com/",
-    appId: "fe26fe8a-60b9-4523-996e-3e5ac2596e9f",
-    appSecret: "mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI="
+    clientId: "fe26fe8a-60b9-4523-996e-3e5ac2596e9f",
+    clientSecret: "mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI="
   },
   logTo:{
     csvLogFile: "C:\\Work\\listman.cli\\listman-cli\\log.csv"
@@ -355,8 +428,8 @@ Don't panic now, we will explain all the sections and corresponding options belo
 ### How To Verify and Validate Config File
 You could always validate your configuration by running the app with the following command parameters:
 
-```
-> listman-cli.exe -c \Config\config.json -v -p -s
+```sh
+> listman-cli.exe -c "config.json" -v -p -s
 ```
 
 That command will:
@@ -440,9 +513,8 @@ logTo:{
 
 Let's say you run archiving for two large list nearly in the same time. When log into a simple txt file logging messages from diffrent Archiving Jobs can't be easily grouped and analised. On the other hand CSV file could be opened in Microsoft Excel and filtered to display the log messages just from a particular Job or Action (download, delete, edit). It's especially usefull if you have multiple archiving jobs running at the same day.
 
-### Archive Jobs List
-
-Listman.io supports running multiple archiving jobs at the same time or by schedule. You have to add all the job configurations into the `archiveJobs` section of the config file:
+### Archive Job Configuration
+Listman.io supports running multiple archiving jobs at the same time or by schedule. You have to add all the job configurations into the `archiveJobs` section (that is an array of JSON objects) of the config file:
 ```
 archiveJobs: [
  {
@@ -452,8 +524,8 @@ archiveJobs: [
  }
 ]
 ```
-### Archive Job Configuration
-Listman.io executes archive jobs. An archive job configuration may contain the following properties and subsections:
+
+An archive job configuration may contain the following properties and subsections:
 
 | Field/Subsection  | Description | Example |
 | ------------- | ------------- | -----------------|
@@ -628,77 +700,6 @@ schedule: {
 | Error Message  | How to solve | 
 | ------------- | ------------- | 
 | `Cron expression is invalid`| Check your cron expression syntax. Use that [link](http://www.cronmaker.com/) to verify your cron expression. |
-
-## Run as Console Application
-
-Before running Listman.io app always validate your config file and run the app in test mode. That will help to catch and solve any configuration issues.
-
-### Run to Validate Config File
-To validate a config file run the app with the `-p` parameter:
-```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -p
-```
-
-### Run in Testing Mode
-Testing mode allow you to run application, connect to the SharePoint instance and iterate through the list items but without actual archiving, deletion, modification and attachments download. It's designed to battle test your configuration as close as possible to the actual production run including logs creation where you could verify that all the expected records were correctly marked for archiving.
-
-To run application in testing mode run the app with the `-t` parameter:
-```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -t
-```
-
-You could combine test mode `-t` and `-v` verbose parameters for detailed logging:
-```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -t -v
-```
-
-### Run the App
-To run application as a console app you must specify at least a config file parameter:
-```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json"
-```
-
-To produce detailed logging file you shall run the application with the `-v` (verbose) parameter:
-```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -v
-```
-
-## Run as Windows Service
-When you ready to move your archiving or export automation on a new level you may want to run Listman.io as a Windows Service. 
-
-### Install Service
-Assuming the installation path to listman.cli is `C:\Work\listman.cli.release\` use that command to install listman-cli as a Windows Service with name `ListmanService`:
-```
-sc create ListmanService binPath= "C:\Work\listman.cli.release\listman-cli.exe"
-```
-
-### Start Service
-1. Go to Services
-2. Right click on ListmanService -> Properties
-3. Type
-```
--c C:\Work\listman.cli.release\Config\listman.sharepoint.json -v
-```
-into the `Start Parameters` field
-4. Click Start
-
-Alternatively use the `sc.exe` command:
-```
-sc start ListmanService -v -c C:\Work\listman.cli.release\Config\listman.sharepoint.json
-```
-### Stop Service
-To stop the service use
-
-```
-sc stop ListmanService
-```
-
-### Delete Service
-To delete the service use
-
-```
-sc delete ListmanService
-```
 
 ## Troubleshooting
 
