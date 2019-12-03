@@ -5,8 +5,8 @@
 [System Requirements](#System-Requirements-And-Prerequisites)</br>
 [Download the App](#Download-the-App)</br>
 [Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)
 [Create SharePoint Application (for App-Only/Application Context)](#support)</br> 
 [Test Connection to SharePoint Instance](#support)</br> 
