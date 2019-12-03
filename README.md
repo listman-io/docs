@@ -1,15 +1,15 @@
 # Documentation
 
 ##### Table of Contents  
-[Getting Started](#gettingStarted)
+[Getting Started](#Getting-Started)
 
-[System Requirements](#sysReq)
+[System Requirements](#System-Requirements-And-Prerequisites)
 
-[Download the App](#download)  
+[Download the App](#Download-the-App)  
 
-[Free vs Enterprise Plan](#sysReq)  
+[Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#sysReq)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)  
 
@@ -57,8 +57,6 @@
 
 [How To Get Help](#How-to-Get-Help) 
 
-<a name="gettingStarted"/>
-
 ## Getting Started
 **Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) into **CSV** files.
 
@@ -84,8 +82,6 @@ Listman.io is built upon the principles of Unix philosophy and designed to *do o
 
 So if you are looking to archive, export or migrate your SharePoint data into Microsoft SQL Server Database you could use Listman.io in conjunction with other ETL tools (for example custom SSIS packages or SQL Server Import and Export Wizard) to easily accomplish your goal delegating exporting data from SharePoint to the Listman.io.
 
-<a name="sysReq"/>
-
 ## System Requirements And Prerequisites
 Before start let's make sure your system complies with the following system requirements:
 
@@ -96,8 +92,6 @@ Before start let's make sure your system complies with the following system requ
 5. Ideally you have to have some knowledge of JSON files, usage of Windows Command Line and Windows Services, namely `sc` command.
 
 > **\* What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
-
-<a name="download"/>
 
 ## Download the App
 It's easy to download a copy of the Listman.io application. For that:
@@ -112,7 +106,7 @@ Alternatively you could download the latest and all the previous versions of the
 
 Congratulations! Now you are ready to configure your first archiving or export procedure. But first let's look at different Listman.io Plans.
 
-## Understanding of Free vs Enterprise Plans
+## Understanding the Free vs Enterprise Plan
 Listman.io is a **commercial software** but purposely designed to be run in a free mode for better learning and assessment experience. There is **no trial** so you have unlimited time to make sure Listman.io fits all your organization archiving or exporting needs. 
 
 We recommend you to start by running Listman.io using a Free Plan and try archive/export data from your Development or Staging SharePoint servers in order to familiarize yourself with the all application features. Once ready you could easily [subscribe to the Enterprise Plan]() and make the most from your archiving or exporting procedures.
