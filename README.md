@@ -684,15 +684,17 @@ schedule: {
 | `Cron expression is invalid`| Check your cron expression syntax. Use that [link](http://www.cronmaker.com/) to verify your cron expression. |
 
 ## Command Line Parameters
-| Short Parameter  | Long Parameter | Description |
-| ------------- | ------------- |  --|
-| `-c`| `--config` | Path to config file |
-| `-v`| `--verbose` | Activate detailed (verbose) logging |
-| `-p`| `--parse` | Parse and validate config file without jobs run |
-| `-l`| `--licence` | Validate user licence without jobs run  |
-| `-s`| `--server` | Test connection to SharePoint Server|
-| `-n`| `--cron` | Validate Cron Expressions for jobs |
-| `-t`| `--test` | Run archive/export jobs in testing mode (without actual data transfer and items modification) |
+Listman.io app could be run with the following parameters:
+
+| Short Parameter  | Long Parameter | Default Value | Description |
+| ------------- | ------------- |  --| -- |
+| `-c path\to\config\file`| `--config path\to\config\file` | `./config.json` | Path to config file |
+| `-v`| `--verbose` | `false` | Activate detailed (verbose) logging |
+| `-p`| `--parse` | `false` | Parse and validate config file without jobs run |
+| `-l`| `--licence` | `false` | Validate user licence without jobs run  |
+| `-s`| `--server` | `false` | Test connection to SharePoint Server|
+| `-n`| `--cron` | `false` | Validate Cron Expressions for jobs |
+| `-t`| `--test` | `false` | Run archive/export jobs in testing mode (without actual data transfer and items modification) |
 
 ## How to Get Help?
 If you have any troubles with running or configuring Listman.io there is several channels where you could get help:
