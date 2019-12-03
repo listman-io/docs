@@ -7,11 +7,11 @@
 [Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)
-[Create SharePoint Application (for App-Only/Application Context)](#support)</br> 
-[Test Connection to SharePoint Instance](#support)</br> 
-[Run as Console App](#support)</br> 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#sysReq)</br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)<br/>
+[Create SharePoint Application (for App-Only/Application Context)](#support)</br>
+[Test Connection to SharePoint Instance](#support)</br>
+[Run as Console App](#support)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#sysReq)</br>  
 [Run as Windows Service](#support)</br> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#sysReq)</br>  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#sysReq)</br> 
