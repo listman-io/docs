@@ -16,18 +16,18 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#Install-Service)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#Start-Service)</br>
 [Configure Listman.io](#Configure-Listmanio)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#sysReq)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#Config-File-Samples)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#How-To-Verify-and-Validate-Config-File)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Licence configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive Job Configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Export Columns configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Filter By configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Record Action configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive To configuration](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Schedule configuration](#sysReq)</br>
-[Command Line Parameters](#support)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Licence configuration](#Licence-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#Connect-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#Logging-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive Job Configuration](#Archive-Job-Configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Export Columns configuration](#Export-Columns-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Filter By configuration](#Filter-By-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Record Action configuration](#Record-Action-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive To configuration](#Archive-To-configuration)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Schedule configuration](#Schedule-configuration)</br>
+[Command Line Parameters](#Command-Line-Parameters)</br>
 [How To Get Help](#How-to-Get-Help)</br>
 
 ## Getting Started
@@ -682,6 +682,17 @@ schedule: {
 | Error Message  | How to solve | 
 | ------------- | ------------- | 
 | `Cron expression is invalid`| Check your cron expression syntax. Use that [link](http://www.cronmaker.com/) to verify your cron expression. |
+
+## Command Line Parameters
+| Short Parameter  | Long Parameter | Description
+| ------------- | ------------- | 
+| `-c`| `--config` | Path to config file |
+| `-v`| `--verbose` | Activate detailed (verbose) logging |
+| `-p`| `--parse` | Parse and validate config file without jobs run |
+| `-l`| `--licence` | Validate user licence without jobs run  |
+| `-s`| `--server` | Test connection to SharePoint Server|
+| `-n`| `--cron` | Validate Cron Expressions for jobs |
+| `-t`| `--test` | Run archive/export jobs in testing mode (without actual data transfer and items modification) |
 
 ## How to Get Help?
 If you have any troubles with running or configuring Listman.io there is several channels where you could get help:
