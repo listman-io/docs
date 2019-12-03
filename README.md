@@ -6,18 +6,18 @@
 [Download the App](#Download-the-App)</br>
 [Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)<br/>
-[Create SharePoint Application (for App-Only/Application Context)](#support)</br>
-[Test Connection to SharePoint Instance](#support)</br>
-[Run as Console App](#support)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#sysReq)</br>
-[Run as Windows Service](#support)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#sysReq)</br>
-[Configure Application](#support)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#Get-Your-Free-Licence-Details)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#How-to-Register-Enterprise-Version)<br/>
+[Create SharePoint Application (for App-Only/Application Context)](#create-sharepoint-application-app-onlyapplication-context)</br>
+[Quick Start Guide](#Quick-Start-Guide)</br>
+[Run as Console Application](#Run-as-Console-Application)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#Run-in-Testing-Mode)</br>
+[Run as Windows Service](#Run-as-Windows-Service)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#Install-Service)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#Start-Service)</br>
+[Configure Listman.io](#Configure-Listmanio)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#sysReq)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#sysReq)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#How-To-Verify-and-Validate-Config-File)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Licence configuration](#sysReq)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#sysReq)</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#sysReq)</br>
@@ -220,7 +220,7 @@ In that example we specify scope as `Tenancy` so the `FullControl` right will be
 
 Great! Now we are ready to run Listman.io for the first time and make sure we could connect to your SharePoint instance.
 
-## Quick Start
+## Quick Start Guide
 1. Download the Listman.io application from your Dashboard or from Github if you haven't done it before.
 2. Unpack the archive into a folder from which you want to run the application. We will reference to this folder as the **app folder** for simplicity.
 3. Navigate to `{app folder}` using Windows Explorer or window Command Line
@@ -391,6 +391,21 @@ The config file has some other additional parameters including logging, what lis
 ```
 
 Don't panic now, we will explain all the sections and corresponding options below.
+
+### Config File Samples
+If you like to learn based on examples you could find several predefined config files in the [Config File Examples] folder. That config files will help you to learn how to:
+* Run Multiple Archiving Jobs
+* Use strings equality Filtering Criteria
+* Use boolean equality Filtering Criteria
+* Use "older that N days" Filtering Criteria
+* Export All Items From The List (no Filtering criteria)
+* Download All List Item Attachments
+* Modify single or multiple list item columns after Archiving/Export
+* Run Listman.io using different Cron Schedules:
+ * run every day
+ * run once per month
+ * run every 6 hours
+ * run every 3 months
 
 ### How To Verify and Validate Config File
 You could always validate your configuration by running the app with the following command parameters:
