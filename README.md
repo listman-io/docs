@@ -1,9 +1,9 @@
 # Documentation
 
 ##### Table of Contents  
-[Getting Started](#Getting-Started)
-[System Requirements](#System-Requirements-And-Prerequisites)
-[Download the App](#Download-the-App)  
+[Getting Started](#Getting-Started)</br>
+[System Requirements](#System-Requirements-And-Prerequisites)</br>
+[Download the App](#Download-the-App)</br>
 
 [Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)  
 
