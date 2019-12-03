@@ -706,8 +706,9 @@ Listman.io app could be run with the following parameters:
 ## How to Get Help?
 If you have any troubles with running or configuring Listman.io there is several channels where you could get help:
 1. Read This (F*cking) Documentation. Especially look for the **Errors** sections on how to fix the root problems
+3. In case of any runtime errors (exceptions) look at the `app_folder\troubleshooting.log` file for detailed `Exception Stack Trace` and try to fix your config file or environment
 2. Browse [All The Issues](https://github.com/listman-io/docs/issues?utf8=%E2%9C%93&q=) that have been already asked and closed
 3. Look at the [Config Files Examples folder]() for diffident configuration file samples
 4. Watch our explanatory videos on the [Listman.io Youtube Channel]()
 5. [Create a new Issue](https://github.com/listman-io/docs/issues) using this Github repo
-6. Send us a support request on [support@listman.io](mailto:support@listman.io)
+6. Send us a support request on [support@listman.io](mailto:support@listman.io) with all the available details about your use case or errors
