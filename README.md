@@ -684,8 +684,8 @@ schedule: {
 | `Cron expression is invalid`| Check your cron expression syntax. Use that [link](http://www.cronmaker.com/) to verify your cron expression. |
 
 ## Command Line Parameters
-| Short Parameter  | Long Parameter | Description
-| ------------- | ------------- | 
+| Short Parameter  | Long Parameter | Description |
+| ------------- | ------------- |  --|
 | `-c`| `--config` | Path to config file |
 | `-v`| `--verbose` | Activate detailed (verbose) logging |
 | `-p`| `--parse` | Parse and validate config file without jobs run |
