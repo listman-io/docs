@@ -1,6 +1,8 @@
-# Documentation
+# Listman.io Docs
 
-##### Table of Contents  
+**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) into **CSV** files.
+
+#### Table of Contents  
 [Getting Started](#Getting-Started)</br>
 [System Requirements](#System-Requirements-And-Prerequisites)</br>
 [Download the App](#Download-the-App)</br>
@@ -30,8 +32,7 @@
 [Command Line Parameters](#Command-Line-Parameters)</br>
 [How To Get Help](#How-to-Get-Help)</br>
 
-## Getting Started
-**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) into **CSV** files.
+## Why Your Business May Need Listman.io?
 
 In short, Listman.io will allow your company to run business more efficiently and:
 
@@ -45,8 +46,12 @@ In short, Listman.io will allow your company to run business more efficiently an
 8. Transfer or export lists data from SharePoint into any DB including MS SQL Server or Azure Database
 8. And finally, configure and run archiving or exporting procedures in no time without any custom development (around 30 mins after simple configuration)
 
+And if you are a SharePoint Consulting Microsoft Partner Listman.io will help you to implement client-side projects with better profit margin by saving money on custom archiving/export/migration requirements development.
+
 ### Why Archive/Export to CSV?
-Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
+... and not to MS SQL for example? 
+
+So, Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
 
 * CSV is understood by almost every piece of software on the planet (past and present)
 * CSV is more human-readable than XML, JSON formats 
@@ -58,16 +63,16 @@ So if you are looking to archive, export or migrate your SharePoint data into Mi
 ## System Requirements And Prerequisites
 Before start let's make sure your system complies with the following system requirements:
 
-1. You have SharePoint 2013/2016/2019 or SharePoint Online.
+1. You have an instance of SharePoint 2013/2016/2019 or SharePoint Online
 2. Listman.io is a Windows application that could be run as command line application or Windows Service. To run it you must have Windows 7/8/10/Server system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine when Listman.io is running as the **application server**.
 3. You have .NET Framework 4.5 installed on the application server. **Note:** .NET Core is not yet supported*.
-4. Your application server is connected to the Internet. Without the internet connection the Listman.io app wouldn't be able to verify your application licence and will fail to run archiving or export procedures.
-5. Ideally you have to have some knowledge of JSON files, usage of Windows Command Line and Windows Services, namely `sc` command.
+4. Your application server is connected to the Internet. Without the internet connection the Listman.io app wouldn't be able to verify your *licence* and will fail to run archiving or export jobs.
+5. Ideally you have to have some knowledge of JSON files, usage of Windows Command Line and Windows Services, and specifically `sc` command.
 
 > **\* What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
 
 ## Download the App
-It's easy to download a copy of the Listman.io application. For that:
+Listman.io app distributed as `zip` archive and don't need any additional installation except unzipping. It's very easy to download a copy of the Listman.io application:
 
 1. Go to [www.listman.io](https://www.listman.io)
 2. **Sign In** with your Microsoft Account. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
@@ -77,12 +82,12 @@ Alternatively you could download the latest and all the previous versions of the
 
 > **Note:** Even if the app is downloaded from the Github you still need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to obtain your free plan licence details.
 
-Congratulations! Now you are ready to configure your first archiving or export procedure. But first let's look at different Listman.io Plans.
+Congratulations! Now you are ready to run and configure the Listman.io app. But first let's understand different Listman.io Plans.
 
 ## Understanding the Free vs Enterprise Plan
 Listman.io is a **commercial software** but purposely designed to be run in a free mode for better learning and assessment experience. There is **no trial** so you have unlimited time to make sure Listman.io fits all your organization archiving or exporting needs. 
 
-We recommend you to start by running Listman.io using a Free Plan and try archive/export data from your Development or Staging SharePoint servers in order to familiarize yourself with the all application features. Once ready you could easily [subscribe to the Enterprise Plan]() and make the most from your archiving or exporting procedures.
+We recommend you to start run Listman.io using a Free Plan and first learn how to archive/export data from your Development or Staging SharePoint servers. Once confident with app configuration you could easily [subscribe to the Enterprise Plan]() and make the most from your archiving or exporting procedures.
 
 > Free version is limited to archive or export only 100 records from one SharePoint Instance per month. You could have just one free plan for your account. If you want to archive or export more than 100 records monthly we recommend you to upgrade to Enterprise Plan. Enterprise Plan also includes 24/7 priority support.
 
@@ -105,13 +110,13 @@ Look at the table below to choose between Free or Enterprise plans.
 | Cost |  Free |  $69 / per month / per SharePoint Instance |
 
 ### Note on Sharepoint Instance
-Let's assume that your SharePoint instance is accessible by the URL address (also known as `siteUrl`): 
+Let's assume that your root SharePoint site is accessible by the URL address (also known as `siteUrl`): 
 
-```
+```sh
 https://listman.sharepoint.com/
 ```
 
-We will call that unique copy of SharePoint system **SharePoint Instance**. Your SharePoint Instance could have multiple sites and lists.
+We will call that unique installation of SharePoint Server as **SharePoint Instance**. Your SharePoint Instance could have multiple sites and lists.
 
 ### Get Your Free Licence Details
 
@@ -129,17 +134,17 @@ To get your Free Plan licence details:
  * Host name: `demo`
  * AppKey: `get it from subscription`
 
-Now we ready to create your first SharePoint Application (also known as Application Context or App) that will be used to authorize Listman.io console application or Windows service against your Sharepoint instance. 
+Now we ready to create your first SharePoint Application (also known as Application Context or App-Only) that will be used to authorize Listman.io app against your Sharepoint Instance. 
 
 ### How to Register Enterprise Version
 
-If you are a new user of Listman.io you could skip this section and circle back to it later after testing Listman.io app by using a Free Plan.
+If you are a new user of Listman.io you could skip this section and circle back to it later after trying Listman.io app by using a Free Plan.
 
-If you want to run archiving procedure on a full scale **without 100 records per month** limitation you have to subscribe to an Enterprise plan:
+If you want to run archiving procedure on a full scale **without 100 records per month limitation** you have to subscribe to an Enterprise plan:
 1. Go to [www.listman.io](https://www.listman.io)
 2. Sign In with your Microsoft Account email. After Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard). Note your Microsoft Account email. You'll need it on the configuration step.
 3. Go to Billing details section and add details of your credit or debit card. 
-4.  Click **Update**. Make sure there is no errors once billing details are updated. 
+4. Click **Update**. Make sure there is no errors once billing details are updated. 
 5. You could always change your billing details in the future. Just type a new card details and click on **Update**.
 > **Note:** we never store your billing detail on our servers. All the billing information and payments processed by Stripe. 
 3. Once billing details are added, go to Subscriptions section
@@ -155,9 +160,9 @@ If you want to run archiving procedure on a full scale **without 100 records per
 
 9. If you need to archive or export lists from multiple SharePoint Instances available on different hosts you have to create a dedicated subscription for each host.
 
-Once subscription is activated your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
+> Once subscription is activated your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
 
-### **`siteUrl` vs `host`?** 
+### **`siteUrl` vs `host`** 
 Your SharePoint Instance is usually available via urls like:
  * `https://listman.sharepoint.com`, 
  * `https://localhost:4545` or even 
@@ -166,21 +171,21 @@ Your SharePoint Instance is usually available via urls like:
  That url is also known as `siteUrl` and used by Listman.io to establish connection with SharePoint Instance (using CSOM). We define `host` for `siteUrl`s as 
  * `listman.sharepoint.com`, or
  * `localhost`, or
- * `192.123.23.12` (note the absence of any port number). 
+ * `192.123.23.12` (note the absence of a port number). 
  
- When Listman.io is running we match your `siteUrl` from the config file with the `host` from the licence details and throwing an error if there is any difference. 
+ When Listman.io app is running we match the `siteUrl` with the `host` from the licence details provided in the config file and throwing an error if there is any difference.
  
  > **Note**: `demo` is a special type of host used for the Free Plan licence details so the Listman.io app could be run in demo mode for any `siteUrl` but with **100 records per month limitation**.
 
 ## Create SharePoint Application (App-Only/Application Context)
 
-Now let's create your first SharePoint Application (also known as Application Context or App) that will be used to authorize Listman.io console application or Windows service against your Sharepoint instance. 
+Now let's create your first SharePoint Application (also known as Application Context or App) that will be used to authorize Listman.io app against your Sharepoint Instance. 
 
-To make sure Listman.io app will have an access to all the lists and lists attachments on your SharePoint Instance we have to create Application Context (or App-Only) and grant it with the `tenant` permissions. You could [read](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs) about that procedure in more details on Microsoft Documentation.
+To make sure Listman.io app will have an access to all the lists and lists attachments we have to create an Application Context (or App-Only) and grant it the `tenant` permissions. You could [read](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs) about that procedure in more details on Microsoft Documentation Portal.
 
-For that:
+To create Application Context for the Listman.io app:
 
-1. Make sure you have an admin access to your Sharepoint instance
+1. Make sure you have an admin access to your Sharepoint Instance
 2. Go to `https://listman.sharepoint.com/_layouts/15/appregnew.aspx`
 3. Type the new application details in the form and click **Create**:
  * Client Id: click on **Generate**
@@ -199,35 +204,35 @@ Title:  	listman.io
 App Domain:  	www.listman.io
 Redirect URI:  	https://www.listman.io
 ```
-5. Note `Client Id` and `Client Secret` and write them down somewhere
+5. Note the `Client Id` and `Client Secret` and write them down somewhere
 6. Now go to `https://listman-admin.sharepoint.com/_layouts/15/appinv.aspx`
-> Note the `-admin` in the URL!
+> Note the `-admin` in the URL! It' very important!
 7. Copy `Client Id` from the step 5 into the "App Id and Title" field
 8. Click on **Lookup**
 9. Note the app details from the step 3 will appear in the form
 10. Fill up the field `App's Permission Request XML` with the following XML:
-```
+```xml
 <AppPermissionRequests AllowAppOnlyPolicy="true">
   <AppPermissionRequest Scope="http://sharepoint/content/tenant" Right="FullControl" />
 </AppPermissionRequests>
 ```
-In that example we specify scope as `Tenancy` so the `FullControl` right will be applied to all children (sites, lists) of this scope. Based on your requirements you could change that scope to Site Collection, Website or individual Lists. Reference to [Microsoft Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint) for more information.
+> In that example we specify scope as `Tenancy` so the `FullControl` right will be applied to all children (sites, lists) of this scope. Based on your requirements you could change that scope to Site Collection, Website or individual Lists. Reference to [Microsoft Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint) for more details on that topic.
 
 11. Click **Create**
 12. You'll see the following Page:
 
 13. Click on **Trust It**.
 
-Great! Now we are ready to run Listman.io for the first time and make sure we could connect to your SharePoint instance.
+Great! Now we are ready to run Listman.io for the first time and make sure we could connect to your SharePoint Instance.
 
 ## Quick Start Guide
 1. Download the Listman.io application from your Dashboard or from Github if you haven't done it before.
 2. Unpack the archive into a folder from which you want to run the application. We will reference to this folder as the **app folder** for simplicity.
-3. Navigate to `{app folder}` using Windows Explorer or window Command Line
+3. Navigate to **app folder** using Windows Explorer
 4. Open the sample `config.json` file in any text editor of your choice
 5. Edit the `config.json` file. Change the fields to your specific values and **Save** the file:
 
-```
+```json
 useLicence: {
   email: "your_sign@in_email.com",
   host: "demo",
@@ -242,7 +247,7 @@ connectTo: {
 6. Open Windows Command Line
 7. Navigate into the **app folder**, for that use the command:
 ```sh
-> cd /d {path_to_app_folder}
+> cd /d app_folder
 ``` 
 8. Run the Listman.io app with the following command line parameters:
 ```sh
@@ -253,23 +258,23 @@ Where:
 * `-l` - parameter used to validate user licence
 * `-s` - parameter used to test the connection to Sharepoint using `siteUrl` and App-Only credentials
 9. Check the results. Note that:
- * you free plan details are valid, for that find the message
+ * you free plan details are valid, for that make sure you see the message
  ```
  Licence successfully validated: Free plan 
  ```
- * the app could connect to the SharePoint instance, for that find the message
-  ```
+ * the app could connect to the SharePoint instance, for that make sure you see the message
+ ```
  Successfully connected to: https://yourcompany.sharepoint.com/
  ```
 
-Good job! Now let's learn what are some different ways to run the Listman.io app and then we could go to the archiving configuration. 
+Good job! Now let's learn what are some different ways to run the Listman.io app. 
 
 ## Run as Console Application
 
-Before running Listman.io app against your production server we recommend you to always validate your config file and run the app in test mode.
+Before running Listman.io app against your production SharePoint Instance we recommend you to *always* un the app in a test mode.
 
-### Run in Testing Mode
-Testing mode allow you to run application, connect to the SharePoint instance and iterate through the list items but without actual archiving, deletion, modification and attachments download. It's designed to battle test your configuration as close as possible to the actual production run including logs creation where you could verify that all the expected records were correctly marked for archiving.
+### Run in Test Mode
+Test mode allows you to start Listman.io app, validate config file, connect to SharePoint Instance and iterate through the list items without actual archiving deletion, modification and attachments download. It's designed to battle test your configuration as close as possible to the actual production run including logs creation to verify all the expected records were correctly marked for archiving.
 
 To run application in testing mode run the app with the  `-p` and `-t` parameter:
 ```sh
@@ -282,57 +287,59 @@ You could combine `-p`, `-t` and `-v` parameters for detailed logging:
 ```
 
 ### Run the App
-To run Listman.io as a console app go to **Application Folder** and run:
+To simply run Listman.io as a console app `cd` to **Application Folder** and run:
 ```sh
 > listman-cli.exe
 ```
-By default application fill try to read its config file using the `{Application Folder}/config.json` path.
+By default application fill try to read a config file from the `app_folder/config.json` path.
 
-You can also specify a path to your custom config file like using `-c` parameter:
+You can specify a path to the custom config file using `-c` parameter:
 ```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json"
+> listman-cli.exe -c "Configs\yourcompany.sharepoint.com.json"
 ```
-It's very useful if you have several config files for several SharePoint Instances.
+The `-c` parameter is useful if you have several config files for several SharePoint Instances.
 
-To produce detailed logging you may run the application with the `-v` (verbose) parameter like:
+To produce detailed logging run the application with the `-v` (verbose) parameter:
 ```sh
-> listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -v
+> listman-cli.exe -c "Configs\yourcompany.sharepoint.com.json" -v
 ```
 
 ## Run as Windows Service
-When you ready to move your archiving or export automation on to a new level you may want to run Listman.io as a Windows Service. 
+When you ready to move your archiving or export automation to a new level you may want to run Listman.io as a Windows Service. 
 
 ### Install Service
 Assuming the installation path to listman.cli is `C:\Work\listman.cli.release\` use that command to install listman-cli as a Windows Service with name `ListmanService`:
-```
+```sh
 sc create ListmanService binPath= "C:\Work\listman.cli.release\listman-cli.exe"
 ```
+
+> Note the white space after `=`. It's there for purpose. 
 
 ### Start Service
 1. Go to Services
 2. Right click on ListmanService -> Properties
 3. Type
-```
+```sh
 -c C:\Work\listman.cli.release\Config\listman.sharepoint.json -v
 ```
-into the `Start Parameters` field
+ into the `Start Parameters` field
 4. Click Start
 
 Alternatively use the `sc.exe` command:
-```
+```sh
 sc start ListmanService -v -c C:\Work\listman.cli.release\Config\listman.sharepoint.json
 ```
 ### Stop Service
 To stop the service use
 
-```
+```sh
 sc stop ListmanService
 ```
 
 ### Delete Service
 To delete the service use
 
-```
+```sh
 sc delete ListmanService
 ```
 
@@ -343,7 +350,7 @@ In that example will run one archiving job immediately after the application sta
 
 The config file has some other additional parameters including logging, what list columns to archive, **filtering condition** to decide which list items to archive and post action that has to be invoked against already archived record (like remove record or modify some of it's fields).
 
-```
+```json
 {
   useLicence: {
     email: "aershov24@gmail.com",
@@ -390,10 +397,10 @@ The config file has some other additional parameters including logging, what lis
 }
 ```
 
-Don't panic now, we will explain all the sections and corresponding options below.
+Don't panic and bear with us, we will explain all the sections and corresponding options below.
 
 ### Config File Samples
-If you like to learn based on examples you could find several predefined config files in the [Config File Examples] folder. That config files will help you to learn how to:
+If you like to learn based on examples you could find several predefined config files in the [Config File Examples]() folder. That config files will help you to learn how to:
 * Run Multiple Archiving Jobs
 * Use strings equality Filtering Criteria
 * Use boolean equality Filtering Criteria
@@ -401,7 +408,7 @@ If you like to learn based on examples you could find several predefined config 
 * Export All Items From The List (no Filtering criteria)
 * Download All List Item Attachments
 * Modify single or multiple list item columns after Archiving/Export
-* Run Listman.io using different Cron Schedules:
+* Run app using different Cron Schedules:
  * run every day
  * run once per month
  * run every 6 hours
@@ -433,7 +440,7 @@ Now let's look on the all configuration sections in details.
 | `appKey` | Application Key generation on your Dashboard for particular host (including `demo`)  | 123123123123123123123 |
 
 **Example**:
-```
+```json
 useLicence: {
   email: "aershov24@gmail.com",
   host: "demo",
@@ -461,7 +468,7 @@ There are some errors that may be generated by the app if that section is filled
 | `clientSecret` | Client Secret generated for the Sharepoint application, created in the [Create SharePoint Application (App-Only/Application Context)]() section | `mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI=` |
 
 **Example**:
-```
+```json
 connectTo: {
   siteUrl:"https://listman.sharepoint.com/",
   clientId: "fe26fe8a-60b9-4523-996e-3e5ac2596e9f",
@@ -485,7 +492,7 @@ Listman.io has several layers of logging:
 3. Logging into a custom CSV file. That is the log you should prefer for everyday use.
 
 The `logTo` section is used to configure the logging into the CSV file and fairly simple to understand:
-```
+```json
 logTo:{
  csvLogFile: "C:\\Work\\listman.cli\\listman-cli\\log.csv"
 }
@@ -497,7 +504,7 @@ Let's say you run archiving for two large list nearly in the same time. When log
 
 ### Archive Job Configuration
 Listman.io supports running multiple archiving jobs at the same time or by schedule. You have to add all the job configurations into the `archiveJobs` section (that is an array of JSON objects) of the config file:
-```
+```json
 archiveJobs: [
  {
   ...Job #1 config
@@ -535,7 +542,7 @@ There are some errors that may be generated by the app if that section is filled
 > SharePoint list columns have three different names: Column Name (or Title), InternalName and StaticName. In the `exportColumns` list you have to provide list of  **Column Names**. The Listman.io automatically will find InternalNames of the columns for CSOM operations. You could find all column names for the list on a view list settings page.
 
 **Example:**
-```
+```json
 exportColumns: ["ID", "GUID", "Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"],
 ```
 
@@ -557,7 +564,7 @@ There are some errors that may be generated by the app if that section is filled
 For example let's say you have a list of `Articles` with columns `State (string)`, `Published (boolean)` and `Published Date (datetime)`. 
 
 If you want to archive all the records that were `Published` use that condition (note `null` values):
-```
+```json
 filterBy: {
   columnName: "Published",
   equalStr: null,
@@ -567,7 +574,7 @@ filterBy: {
 ```
 
 Or if you want to archive all the records that have `Published Date` older than 30 days:
-```
+```json
 filterBy: {
   columnName: "Published",
   equalStr: null,
@@ -577,7 +584,7 @@ filterBy: {
 ```
 
 Or if you want to archive all the records that have `State` is equal `Processed Successfully` :
-```
+```json
 filterBy: {
   columnName: "Published",
   equalStr: "Processed Successfully",
@@ -609,7 +616,7 @@ Once list record is archived or exported you may want to delete it or modify som
 | `remove` | remove record after archiving, `false` by default   | `true` |
 
 **Example**:
-```
+```json
 recordAction:{
   remove: false,
   modify: [
@@ -641,7 +648,7 @@ recordAction:{
 | `append` | Overwrite or append archived records into the CSV file if it exists. `true` by default. | `true` |
 
 **Example**:
-```
+```json
 archiveTo: {
   file: "C:\\Work\\listman.cli\\listman-cli\\list1_archive.csv",
   attachmentsFolder: "C:\\Work\\listman.cli\\listman-cli\\attachments",
@@ -661,16 +668,16 @@ Listman.io could run archiving jobs by schedule. Basically you could run job imm
 | `runUsingCron` | Run the job using cron expression. For example, run the job every 1 hour starting at 12 am every day or run the job each first day of each month at 12 am | `0 0 0/1 1/1 * ? *` or `0 0 12 1 1/1 ? *` |
 
 **Example:**
-Run the job **immediately** after launch
-```
+Run the job **immediately** after start:
+```json
 schedule: {
   runImmediate: true,
   runUsingCron: null
 }
 ```
 or
-run the job **each first day of each month at 12 am**
-```
+run the job **each first day of each month at 12 am**:
+```json
 schedule: {
   runImmediate: false,
   runUsingCron: "0 0 12 1 1/1 ? *"
@@ -698,7 +705,7 @@ Listman.io app could be run with the following parameters:
 
 ## How to Get Help?
 If you have any troubles with running or configuring Listman.io there is several channels where you could get help:
-1. Read This (F*cking) Documentation. Especially look for the Errors sections on how to fix the root problems
+1. Read This (F*cking) Documentation. Especially look for the **Errors** sections on how to fix the root problems
 2. Browse [All The Issues](https://github.com/listman-io/docs/issues?utf8=%E2%9C%93&q=) that have been already asked and closed
 3. Look at the [Config Files Examples folder]() for diffident configuration file samples
 4. Watch our explanatory videos on the [Listman.io Youtube Channel]()
