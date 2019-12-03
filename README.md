@@ -4,56 +4,31 @@
 [Getting Started](#Getting-Started)</br>
 [System Requirements](#System-Requirements-And-Prerequisites)</br>
 [Download the App](#Download-the-App)</br>
-
-[Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)  
-
-[Create SharePoint Application (for App-Only/Application Context)](#support) 
-
-[Test Connection to SharePoint Instance](#support) 
-
-[Run as Console App](#support) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#sysReq)   
-
-[Run as Windows Service](#support) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#sysReq)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#sysReq)  
-
-[Configure Application](#support) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#sysReq)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#sysReq) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Licence configuration](#sysReq)   
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#sysReq)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#sysReq)  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive Job Configuration](#sysReq) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Export Columns configuration](#sysReq) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Filter By configuration](#sysReq) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Record Action configuration](#sysReq) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive To configuration](#sysReq) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Schedule configuration](#sysReq) 
-
-[Command Line Parameters](#support) 
-
-[How To Get Help](#How-to-Get-Help) 
+[Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan Licence Details](#sysReq)</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#sysReq)</br>  
+[Create SharePoint Application (for App-Only/Application Context)](#support)</br> 
+[Test Connection to SharePoint Instance](#support)</br> 
+[Run as Console App](#support)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#sysReq)</br>   
+[Run as Windows Service](#support)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#sysReq)</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#sysReq)</br> 
+[Configure Application](#support)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#sysReq)</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#sysReq)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Licence configuration](#sysReq)</br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#sysReq)</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#sysReq)</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive Job Configuration](#sysReq)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Export Columns configuration](#sysReq)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Filter By configuration](#sysReq)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Record Action configuration](#sysReq)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive To configuration](#sysReq)</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Schedule configuration](#sysReq)</br> 
+[Command Line Parameters](#support)</br> 
+[How To Get Help](#How-to-Get-Help)</br> 
 
 ## Getting Started
 **Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) into **CSV** files.
