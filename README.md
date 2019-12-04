@@ -604,6 +604,10 @@ If you decided to create a new conditional columns for `filterBy` we recommend y
 ```sh
 =IF([Column1]<=[Column2], "ARCHIVE", "DON'T ARCHIVE")
 ```
+or in case of ranges:
+```sh
+=IF(AND([Column1]> 50, [Columns1] < 100), "ARCHIVE", "DON'T ARCHIVE")
+```
 
 In that case you could just use string equality condition, aka `equalStr`:
 ```json
