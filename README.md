@@ -646,6 +646,7 @@ Once list record is archived or exported you may want to delete it or modify som
 | ------------- | ------------- | -----------------|
 | `columnName` | Column to modify. Make sure you also have this column specified in `exportColumns` array  | `true` |
 | `setIntValue` | set number value, `null` by default | `-1` |
+| `setDoubleValue` | set currency value, `null` by default | `99.89` |
 | `setStrValue` | set string or choice value, `null` by default | `Choice 2` |
 | `setBoolValue` | set boolean value, `true` or `false`, `null` by default | `true` |
 | `setCurrentDateValue` | set current datetime value for DateTime type column, `null` by default | `true` |
