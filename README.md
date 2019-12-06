@@ -1,6 +1,8 @@
 # Listman.io Docs
 
-**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) into **CSV** files.
+**Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size into **CSV** files without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold).
+
+![listman.io app in action](https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png)
 
 #### Table of Contents  
 [Getting Started](#Getting-Started)</br>
