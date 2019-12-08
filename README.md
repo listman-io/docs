@@ -66,10 +66,11 @@ So if you are looking to archive, export or migrate your SharePoint data into Mi
 Before start let's make sure your system complies with the following system requirements:
 
 1. You have an instance of SharePoint 2013/2016/2019 or SharePoint Online
-2. Listman.io is a Windows application that could be run as command line application or Windows Service. To run it you must have Windows 7/8/10/Server system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine when Listman.io is running as the **application server**.
+2. You should have Microsoft Account
+2. To run Listman.io as command line application or Windows Service you must have Windows 7/8/10/Server 2008/2012/2016 system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine as the **application server**.
 3. You have .NET Framework 4.5 installed on the application server. **Note:** .NET Core is not yet supported*.
-4. Your application server is connected to the Internet. Without the internet connection the Listman.io app wouldn't be able to verify your *licence* and will fail to run archiving or export jobs.
-5. Ideally you have to have some knowledge of JSON files, usage of Windows Command Line and Windows Services, and specifically `sc` command.
+4. Your application server must be connected to the Internet. Without the internet connection Listman.io app wouldn't be able to verify your *licence* and will fail to run archiving or export jobs.
+5. Ideally you should to have some knowledge of JSON files, usage of Windows Command Line and Windows Services, and specifically `sc` command but it's all optional.
 
 > **\* What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
 
@@ -77,10 +78,18 @@ Before start let's make sure your system complies with the following system requ
 Listman.io app distributed as `zip` archive and don't need any additional installation except unzipping. It's very easy to download a copy of the Listman.io application:
 
 1. Go to [www.listman.io](https://www.listman.io)
-2. **Sign In** with your Microsoft Account. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
-3. Click on Download the Listman.io
+
+![image](https://user-images.githubusercontent.com/13550565/70397333-57bc0d00-1a4c-11ea-87d2-0079a10f3844.png)
+
+2. Click on **Sign In with Microsoft**. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
+
+![image](https://user-images.githubusercontent.com/13550565/70385120-e6397b80-19c5-11ea-9291-36aebedfb3cd.png)
+
+3. Click on Download the Listman.io and save id somewhere on your application server
 
 Alternatively you could download the latest and all the previous versions of the Listman.io application using that [link](https://github.com/listman-io/docs/packages) from the Github. 
+
+![image](https://user-images.githubusercontent.com/13550565/70385126-01a48680-19c6-11ea-8859-b83cf2f5992a.png)
 
 > **Note:** Even if the app is downloaded from the Github you still need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to obtain your free plan licence details.
 
@@ -91,7 +100,7 @@ Listman.io is a **commercial software** but purposely designed to be run in a fr
 
 We recommend you to start run Listman.io using a Free Plan and first learn how to archive/export data from your Development or Staging SharePoint servers. Once confident with app configuration you could easily [subscribe to the Enterprise Plan]() and make the most from your archiving or exporting procedures.
 
-> Free version is limited to archive or export only 100 records from one SharePoint Instance per month. You could have just one free plan for your account. If you want to archive or export more than 100 records monthly we recommend you to upgrade to Enterprise Plan. Enterprise Plan also includes 24/7 priority support.
+> Free version is limited to archive or export only 50 records from one SharePoint Instance per run. You could have just one free plan for your account. If you want to archive or export more than 50 records monthly we recommend you to upgrade to Enterprise Plan. Enterprise Plan also includes 24/7 priority support.
 
 Look at the table below to choose between Free or Enterprise plans.
 
@@ -108,7 +117,7 @@ Look at the table below to choose between Free or Enterprise plans.
 | Cron Scheduler |  ✅ |  ✅ |
 | Email Support |  ✅ |  ✅ |
 | Priority Support |  ❌ |  ✅ |
-| Records archiving/export per month |  100 |  ♾️, No Limit |
+| Records archiving/export per run |  50 |  ♾️, No Limit |
 | Cost |  Free |  $69 / per month / per SharePoint Instance |
 
 ### Note on Sharepoint Instance
@@ -126,15 +135,19 @@ To run the Listman.io application for the first time you have to know your *lice
 
 * SignIn email (like `peter.pan@gmail.com`)
 * SharePoint host (like `demo`, `listman.sharepoint.com` or `localhost`)
-* AppKey (like `231231412`)
+* AppKey (like `listman-*****-io`)
 
 To get your Free Plan licence details:
 1. Go to [www.listman.io](https://www.listman.io)
 2. Sign In with your Microsoft Account email. After Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard). Note your Microsoft Account email. You'll need it on the configuration step.
-3. Go to Subscriptions section and note the following details:
- * Your Microsoft Account `email`
+
+![image](https://user-images.githubusercontent.com/13550565/70385182-cb1b3b80-19c6-11ea-87f4-549562458d8a.png)
+
+3. Go to Licenses section and note the following details for the `demo` licence:
  * Host name: `demo`
- * AppKey: `get it from subscription`
+ * AppKey: `listman-*****-io`
+
+![image](https://user-images.githubusercontent.com/13550565/70397377-ad90b500-1a4c-11ea-9d55-40d091bc19dd.png)
 
 Now we ready to create your first SharePoint Application (also known as Application Context or App-Only) that will be used to authorize Listman.io app against your Sharepoint Instance. 
 
@@ -147,22 +160,30 @@ If you want to run archiving procedure on a full scale **without 100 records per
 2. Sign In with your Microsoft Account email. After Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard). Note your Microsoft Account email. You'll need it on the configuration step.
 3. Go to Billing details section and add details of your credit or debit card. 
 4. Click **Update**. Make sure there is no errors once billing details are updated. 
+
+![image](https://user-images.githubusercontent.com/13550565/70397403-d749dc00-1a4c-11ea-9d03-8e3076d19a21.png)
+
+
 5. You could always change your billing details in the future. Just type a new card details and click on **Update**.
 > **Note:** we never store your billing detail on our servers. All the billing information and payments processed by Stripe. 
 3. Once billing details are added, go to Subscriptions section
-4. Click on **Add Subscription**
-5. Type name of the new SharePoint `host` you want to archive or export data from like `listman.sharepoint.com` or `localhost`. If you host is accessible only by IP address or localhost type them as they are. **Do not type port**.
-6. Click on **Save**. Now your Subscription is created but not yet activated.
-7. Check your licence details, note generated `AppKey` and click on **Activate** button. Now your subscription and you could use `host` and `appKey` in your config file (see section...). 
+4. Click on **Add Licence** button near `Licences` section (big plus icon)
+5. Type name of the new SharePoint `host` you want to archive or export data from like `listman.sharepoint.com` or `localhost`. If you host is accessible only by IP address or localhost type them as they are. **Do not type port**. Now your Licence is created but not yet activated.
 
-> **Note**: you can't change the **host** after subscription is activated so make sure to thoroughly check your details.
-8. You could delete an active subscription at any time. 
+7. Check your licence details, note generated `AppKey` and click on **Activate** button **twice** to confirm activation.
 
-> **Note**: Listman.io doesn't support to *Pausing* a subscription.
+![image](https://user-images.githubusercontent.com/13550565/70397587-89ce6e80-1a4e-11ea-90c9-e86c6d2a34f6.png)
 
-9. If you need to archive or export lists from multiple SharePoint Instances available on different hosts you have to create a dedicated subscription for each host.
+> **Note**: you can't change the **Host** after your licence is activated so make sure to thoroughly check your details.
+8. You could **Unsubscribe** from active licence at any time. 
 
-> Once subscription is activated your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
+![image](https://user-images.githubusercontent.com/13550565/70397601-a9659700-1a4e-11ea-94e9-c7bee237fdc5.png)
+
+> **Note**: Listman.io doesn't support *Pausing* for a licence.
+
+9. If you need to archive or export lists from multiple SharePoint Instances available on different **hosts** you have to create a new licence for each host.
+
+> Once licence is activated your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
 
 ### **`siteUrl` vs `host`** 
 Your SharePoint Instance is usually available via urls like:
@@ -177,7 +198,7 @@ Your SharePoint Instance is usually available via urls like:
  
  When Listman.io app is running we match the `siteUrl` with the `host` from the licence details provided in the config file and throwing an error if there is any difference.
  
- > **Note**: `demo` is a special type of host used for the Free Plan licence details so the Listman.io app could be run in demo mode for any `siteUrl` but with **100 records per month limitation**.
+ > **Note**: `demo` is a special type of host used for the Free Plan licence details so the Listman.io app could be run in demo mode for any `siteUrl` but with **50 records per run limitation**.
 
 ## Create SharePoint Application (App-Only/Application Context)
 
@@ -185,17 +206,27 @@ Now let's create your first SharePoint Application (also known as Application Co
 
 To make sure Listman.io app will have an access to all the lists and lists attachments we have to create an Application Context (or App-Only) and grant it the `tenant` permissions. You could [read](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs) about that procedure in more details on Microsoft Documentation Portal.
 
-To create Application Context for the Listman.io app:
+For this example let's assume that your SharePoint Instance is available on `https://listman.sharepoint.com` url. To create Application Context for the Listman.io app:
 
-1. Make sure you have an admin access to your Sharepoint Instance
-2. Go to `https://listman.sharepoint.com/_layouts/15/appregnew.aspx`
+1. Make sure you have an admin access (primary site collection administrator.) to your Sharepoint Instance
+
+> When you purchase a Microsoft 365 or Office 365 subscription, a team site is automatically created, and the global admin is set as the primary site collection administrator. For info about assigning a user the SharePoint administrator role, see [Assign admin roles in Office 365 for business](https://docs.microsoft.com/en-us/office365/admin/add-users/assign-admin-roles?view=o365-worldwide).
+
+2. Go to url: `https://listman.sharepoint.com/_layouts/15/appregnew.aspx`. You will see the new app registration form:
+
+![image](https://user-images.githubusercontent.com/13550565/70397741-c5b60380-1a4f-11ea-92b8-788a0db71504.png)
+
 3. Type the new application details in the form and click **Create**:
  * Client Id: click on **Generate**
  * Client Secret: click on **Generate**
  * Title: listman.io
  * App Domain: www.listman.io
  * Redirect Url: https://www.listman.io
- * Click Create
+ * Click Create button
+
+![image](https://user-images.githubusercontent.com/13550565/70397765-f7c76580-1a4f-11ea-84bf-a0959f49c108.png)
+
+
 4. You'll see the message:
 
 ```
@@ -206,9 +237,16 @@ Title:  	listman.io
 App Domain:  	www.listman.io
 Redirect URI:  	https://www.listman.io
 ```
+
+![image](https://user-images.githubusercontent.com/13550565/70397778-19285180-1a50-11ea-816c-8f2d390c60be.png)
+
 5. Note the `Client Id` and `Client Secret` and write them down somewhere
-6. Now go to `https://listman-admin.sharepoint.com/_layouts/15/appinv.aspx`
+6. Now go to `https://listman-admin.sharepoint.com/_layouts/15/appinv.aspx`. You will see another app form but on the admin site (don't ask, it's Microsoft 🤦🤦🤦 designed those UI).
+
 > Note the `-admin` in the URL! It' very important!
+
+![image](https://user-images.githubusercontent.com/13550565/70397812-512f9480-1a50-11ea-84f4-867c147b3d3a.png)
+
 7. Copy `Client Id` from the step 5 into the "App Id and Title" field
 8. Click on **Lookup**
 9. Note the app details from the step 3 will appear in the form
@@ -218,10 +256,15 @@ Redirect URI:  	https://www.listman.io
   <AppPermissionRequest Scope="http://sharepoint/content/tenant" Right="FullControl" />
 </AppPermissionRequests>
 ```
+
+![image](https://user-images.githubusercontent.com/13550565/70397855-b5eaef00-1a50-11ea-9a2a-0f5790caff90.png)
+
 > In that example we specify scope as `Tenancy` so the `FullControl` right will be applied to all children (sites, lists) of this scope. Based on your requirements you could change that scope to Site Collection, Website or individual Lists. Reference to [Microsoft Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint) for more details on that topic.
 
 11. Click **Create**
 12. You'll see the following Page:
+
+![image](https://user-images.githubusercontent.com/13550565/70397861-d450ea80-1a50-11ea-88ea-9465dbd40e05.png)
 
 13. Click on **Trust It**.
 
@@ -288,8 +331,8 @@ You could combine `-p`, `-t` and `-v` parameters for detailed logging:
 > listman-cli.exe -c "Configs\comsco.sharepoint.com.json" -p -t -v
 ```
 
-### Run the App
-To simply run Listman.io as a console app `cd` to **Application Folder** and run:
+### Run in Production Mode
+To run Listman.io in a production mode as a console app  go to (`cd`) to **Application Folder** and run:
 ```sh
 > listman-cli.exe
 ```
@@ -400,21 +443,6 @@ The config file has some other additional parameters including logging, what lis
 ```
 
 Don't panic and bear with us, we will explain all the sections and corresponding options below.
-
-### Config File Samples
-If you like to learn based on examples you could find several predefined config files in the [Config File Examples]() folder. That config files will help you to learn how to:
-* Run Multiple Archiving Jobs
-* Use strings equality Filtering Criteria
-* Use boolean equality Filtering Criteria
-* Use "older that N days" Filtering Criteria
-* Export All Items From The List (no Filtering criteria)
-* Download All List Item Attachments
-* Modify single or multiple list item columns after Archiving/Export
-* Run app using different Cron Schedules:
- * run every day
- * run once per month
- * run every 6 hours
- * run every 3 months
 
 ### How To Verify and Validate Config File
 You could always validate your configuration by running the app with the following command parameters:
