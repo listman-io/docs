@@ -302,7 +302,7 @@ Now let's quickly validate that we could run Listman.io app using a Free License
  * `clientSecret` for the SharePoint app from step 4, section [Create SharePoint Application](#create-sharepoint-application-app-onlyapplication-context)
 5. Edit the `config.json` file. Change the fields to your specific values and **Save** the file:
 
-```json
+```js
 uselicense: {
   email: "your_sign@in_email.com",
   host: "demo",
