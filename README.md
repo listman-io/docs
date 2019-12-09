@@ -2,7 +2,7 @@
 
 **Listman.io** is a simple yet powerfully Windows Service/console application that helps organizations archive or export data and attachments from any SharePoint lists of any size into **CSV** files without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold).
 
-<img src="https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png" alt="drawing" width="500"/>
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png" alt="drawing" width="600"/>
 
 #### Table of Contents  
 [Getting Started](#Getting-Started)</br>
@@ -83,13 +83,13 @@ Listman.io app distributed as `zip` archive and don't need any additional instal
 
 2. Click on **Sign In with Microsoft**. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
 
-<img src="https://user-images.githubusercontent.com/13550565/70385120-e6397b80-19c5-11ea-9291-36aebedfb3cd.png" alt="drawing" width="200"/>
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385120-e6397b80-19c5-11ea-9291-36aebedfb3cd.png" alt="drawing" width="200"/>
 
 3. Click on Download the Listman.io and save id somewhere on your application server
 
 Alternatively you could download the latest and all the previous versions of the Listman.io application using that [link](https://github.com/listman-io/docs/packages) from the Github. 
 
-<img src="https://user-images.githubusercontent.com/13550565/70385126-01a48680-19c6-11ea-8859-b83cf2f5992a.png" alt="drawing" width="400"/>
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385126-01a48680-19c6-11ea-8859-b83cf2f5992a.png" alt="drawing" width="400"/>
 
 > **Note:** Even if the app is downloaded from the Github you still need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to obtain your free plan licence details.
 
@@ -141,7 +141,7 @@ To get your Free Plan licence details:
 1. Go to [www.listman.io](https://www.listman.io)
 2. Sign In with your Microsoft Account email. After Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard). Note your Microsoft Account email. You'll need it on the configuration step.
 
-![image](https://user-images.githubusercontent.com/13550565/70385182-cb1b3b80-19c6-11ea-87f4-549562458d8a.png)
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385182-cb1b3b80-19c6-11ea-87f4-549562458d8a.png" alt="drawing" width="300"/>
 
 3. Go to Licenses section and note the following details for the `demo` licence:
  * Host name: `demo`
@@ -245,7 +245,7 @@ Redirect URI:  	https://www.listman.io
 
 > Note the `-admin` in the URL! It' very important!
 
-![image](https://user-images.githubusercontent.com/13550565/70397812-512f9480-1a50-11ea-84f4-867c147b3d3a.png)
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70397812-512f9480-1a50-11ea-84f4-867c147b3d3a.png" alt="drawing" width="400"/>
 
 7. Copy `Client Id` from the step 5 into the "App Id and Title" field
 8. Click on **Lookup**
@@ -257,7 +257,7 @@ Redirect URI:  	https://www.listman.io
 </AppPermissionRequests>
 ```
 
-![image](https://user-images.githubusercontent.com/13550565/70397855-b5eaef00-1a50-11ea-9a2a-0f5790caff90.png)
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70397855-b5eaef00-1a50-11ea-9a2a-0f5790caff90.png" alt="drawing" width="400"/>
 
 > In that example we specify scope as `Tenancy` so the `FullControl` right will be applied to all children (sites, lists) of this scope. Based on your requirements you could change that scope to Site Collection, Website or individual Lists. Reference to [Microsoft Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint) for more details on that topic.
 
