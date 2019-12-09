@@ -5,34 +5,41 @@
 ![](https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png)
 
 #### Table of Contents  
-[Getting Started](#Getting-Started)</br>
-[System Requirements](#System-Requirements-And-Prerequisites)</br>
-[Download the App](#Download-the-App)</br>
-[Free vs Enterprise Plan](#Understanding-the-Free-vs-Enterprise-Plan)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Note on SharePoint Instance](#Note-on-Sharepoint-Instance)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Get Free Plan license Details](#Get-Your-Free-license-Details)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Subscribe to Enterprize Plan](#How-to-Register-Enterprise-Version)<br/>
-[Create SharePoint Application (for App-Only/Application Context)](#create-sharepoint-application-app-onlyapplication-context)</br>
-[Quick Start Guide](#Quick-Start-Guide)</br>
-[Run as Console Application](#Run-as-Console-Application)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run in Test Mode](#Run-in-Testing-Mode)</br>
-[Run as Windows Service](#Run-as-Windows-Service)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Install Service](#Install-Service)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Start Service](#Start-Service)</br>
-[Configure Listman.io](#Configure-Listmanio)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Config Files Samples](#Config-File-Samples)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Verify and Validate Config File](#How-To-Verify-and-Validate-Config-File)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[license configuration](#license-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Connect configuration](#Connect-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Logging configuration](#Logging-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive Job Configuration](#Archive-Job-Configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Export Columns configuration](#Export-Columns-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Filter By configuration](#Filter-By-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Record Action configuration](#Record-Action-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Archive To configuration](#Archive-To-configuration)</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Schedule configuration](#Schedule-configuration)</br>
-[Command Line Parameters](#Command-Line-Parameters)</br>
-[How To Get Help](#How-to-Get-Help)</br>
+
+* [Why Your Business May Need Listman.io?](#why-your-business-may-need-listmanio-)
+  + [Why Archive/Export to CSV?](#why-archive-export-to-csv-)
+* [System Requirements And Prerequisites](#system-requirements-and-prerequisites)
+* [Download the App](#download-the-app)
+* [Understanding the Free vs Enterprise License](#understanding-the-free-vs-enterprise-license)
+  + [Note on Sharepoint Instance](#note-on-sharepoint-instance)
+  + [Get Your Free License Details](#get-your-free-license-details)
+  + [How to Subscribe to Enterprise License](#how-to-subscribe-to-enterprise-license)
+  + [**`siteUrl` vs `host`**](#---siteurl--vs--host---)
+* [Create SharePoint Application (App-Only/Application Context)](#create-sharepoint-application--app-only-application-context-)
+* [Quick Start Guide](#quick-start-guide)
+  + [I got an error, what to do?](#i-got-an-error--what-to-do-)
+* [Run as Console Application](#run-as-console-application)
+  + [Run in Test Mode](#run-in-test-mode)
+  + [Run in Production Mode](#run-in-production-mode)
+* [Run as Windows Service](#run-as-windows-service)
+  + [Install Service](#install-service)
+  + [Start Service](#start-service)
+  + [Stop Service](#stop-service)
+  + [Delete Service](#delete-service)
+* [Configure Listman.io](#configure-listmanio)
+  + [How To Verify and Validate Config File](#how-to-verify-and-validate-config-file)
+  + [`useLicense` section](#-uselicense--section)
+  + [`connectTo` section](#-connectto--section)
+  + [`logTo` section](#-logto--section)
+  + [`archiveJobs` section](#-archivejobs--section)
+    - [`exportColumns` field](#-exportcolumns--field)
+    - [`filterBy` subsection](#-filterby--subsection)
+      * [`filterBy` with SharePoint Conditional Columns](#-filterby--with-sharepoint-conditional-columns)
+    - [`recordAction` subsection](#-recordaction--subsection)
+    - [`archiveTo` subsection](#-archiveto--subsection)
+    - [`schedule` section](#-schedule--section)
+* [Command Line Parameters](#command-line-parameters)
+* [How to Get Help?](#how-to-get-help-)
 
 ## Why Your Business May Need Listman.io?
 
@@ -91,20 +98,20 @@ Alternatively you could download the latest and all the previous versions of the
 
 <img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385126-01a48680-19c6-11ea-8859-b83cf2f5992a.png" alt="drawing" width="400"/>
 
-> **Note:** Even if the app is downloaded from the Github you still need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to obtain your free plan license details.
+> **Note:** Even if the app is downloaded from the Github you still need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to obtain your Free License details.
 
-Congratulations! Now you are ready to run and configure the Listman.io app. But first let's understand different Listman.io Plans.
+Congratulations! Now you are ready to run and configure the Listman.io app. But first let's understand different Listman.io Licenses.
 
-## Understanding the Free vs Enterprise Plan
-Listman.io is a **commercial software** but purposely designed to be run in a free mode for better learning and assessment experience. There is **no trial** so you have unlimited time to make sure Listman.io fits all your organization archiving or exporting needs. 
+## Understanding the Free vs Enterprise License
+Listman.io is a **commercial software** but purposely designed to be run in a free mode for better learning and evaluation experience. There is **no trial** so you have unlimited time to make sure Listman.io fits all your organization archiving or exporting needs. 
 
-We recommend you to start run Listman.io using a Free Plan and first learn how to archive/export data from your Development or Staging SharePoint servers. Once confident with app configuration you could easily [subscribe to the Enterprise Plan]() and make the most from your archiving or exporting procedures.
+We recommend you to start run Listman.io using a Free License and first learn how to archive/export data from your Development or Staging SharePoint servers. Once confident with app configuration you could easily [subscribe to the Enterprise License]() and make the most from your archiving or exporting procedures.
 
-> Free version is limited to archive or export only 50 records from one SharePoint Instance per run. You could have just one free plan for your account. If you want to archive or export more than 50 records monthly we recommend you to upgrade to Enterprise Plan. Enterprise Plan also includes 24/7 priority support.
+> Free License is limited to archive or export only 50 records from one SharePoint Instance per run. You could have just one Free License for your account. If you want to archive or export more than 50 records monthly we recommend you to upgrade to Enterprise License. Enterprise License also includes priority support.
 
-Look at the table below to choose between Free or Enterprise plans.
+Look at the table below to choose between Free or Enterprise Licenses.
 
-| Listman.io Feature  | Free Plan | Enterprise Plan |
+| Listman.io Feature  | Free License | Enterprise License |
 | ------------- | ------------- | -----------------|
 | Unlimited sites |  ✅ |  ✅ |
 | Unlimited jobs |  ✅ |  ✅ |
@@ -121,13 +128,13 @@ Look at the table below to choose between Free or Enterprise plans.
 | Cost |  Free |  $69 / per month / per SharePoint Instance |
 
 ### Note on Sharepoint Instance
-Let's assume that your root SharePoint site is accessible by the URL address (also known as `siteUrl`): 
+So what is SharePoint Instance? Let's assume that your root SharePoint site is accessible by the URL address (also known as `siteUrl`): 
 
 ```sh
 https://listman.sharepoint.com/
 ```
 
-We will call that unique installation of SharePoint Server as **SharePoint Instance**. Your SharePoint Instance could have multiple sites and lists.
+We will call that unique installation of SharePoint Server as **SharePoint Instance**. Your SharePoint Instance could have multiple sites and lists. So one Enterprise License lets you to archive or export data from any site/list on one SharePoint Instance.
 
 ### Get Your Free License Details
 
@@ -137,7 +144,7 @@ To run the Listman.io application for the first time you have to know your *lice
 * SharePoint host (like `demo`, `listman.sharepoint.com` or `localhost`)
 * AppKey (like `listman-*****-io`)
 
-To get your Free Plan license details:
+To get your Free License details:
 1. Go to [www.listman.io](https://www.listman.io)
 2. Sign In with your Microsoft Account email. After Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard). 
 
@@ -485,12 +492,12 @@ We recommend you to run this command every time you make significant changes to 
 Now let's look on the all configuration sections in details.
 
 ### `useLicense` section
-`uselicense` section is used to provide details about your free or Enterprise plan license:
+`uselicense` section is used to provide details about your free or Enterprise License:
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
 | `email` | Your Microsoft Account email used to sign in on www.listman.io  | aershov24@gmail.com |
-| `host` | Sharepoint Instance host (domain) name or `demo` for free plan | `demo` for free plan or `yourcompany.sharepoint.com` for Enterprise Plan |
+| `host` | Sharepoint Instance host (domain) name or `demo` for Free License | `demo` for Free License or `yourcompany.sharepoint.com` for Enterprise License |
 | `appKey` | Application Key generation on your Dashboard for particular host (including `demo`)  | 123123123123123123123 |
 
 **Example**:
