@@ -6,8 +6,8 @@
 
 #### Table of Contents  
 
-* [Why Your Business May Need Listman.io?](#why-your-business-may-need-listmanio-)
-  + [Why Archive/Export to CSV?](#why-archive-export-to-csv-)
+* [Why Your Business May Need Listman.io](#why-your-business-may-need-listmanio)
+  + [Why Archive/Export to CSV](#why-archive-export-to-csv)
 * [System Requirements And Prerequisites](#system-requirements-and-prerequisites)
 * [Download the App](#download-the-app)
 * [Understanding the Free vs Enterprise License](#understanding-the-free-vs-enterprise-license)
@@ -17,7 +17,7 @@
   + [**`siteUrl` vs `host`**](#---siteurl--vs--host---)
 * [Create SharePoint Application (App-Only/Application Context)](#create-sharepoint-application--app-only-application-context-)
 * [Quick Start Guide](#quick-start-guide)
-  + [I got an error, what to do?](#i-got-an-error--what-to-do-)
+  + [I got an error, what to do?](#i-got-an-error--what-to-do)
 * [Run as Console Application](#run-as-console-application)
   + [Run in Test Mode](#run-in-test-mode)
   + [Run in Production Mode](#run-in-production-mode)
@@ -39,9 +39,9 @@
     - [`archiveTo` subsection](#-archiveto--subsection)
     - [`schedule` section](#-schedule--section)
 * [Command Line Parameters](#command-line-parameters)
-* [How to Get Help?](#how-to-get-help-)
+* [How to Get Help](#how-to-get-help)
 
-## Why Your Business May Need Listman.io?
+## Why Your Business May Need Listman.io
 
 In short, Listman.io will allow your company to run business more efficiently and:
 
@@ -57,7 +57,7 @@ In short, Listman.io will allow your company to run business more efficiently an
 
 And if you are a SharePoint Consulting Microsoft Partner Listman.io will help you to implement client-side projects with better profit margin by saving money on custom archiving/export/migration requirements development.
 
-### Why Archive/Export to CSV?
+### Why Archive/Export to CSV
 ... and not to MS SQL for example? 
 
 So, Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
@@ -339,7 +339,7 @@ Where:
 
 Good job! Now let's learn what are some different ways to run the Listman.io app. 
 
-### I got an error, what to do?
+### I got an error, what to do
 If you can't see the two successful messages above check:
 1. Validate all your details in the config file
 2. Make sure your application server is connected to Internet and there is no Firewall rules block any outcomming/incomming https requests 
@@ -813,7 +813,7 @@ Listman.io app could be run with the following parameters:
 | `-n`| `--cron` | `false` | Validate Cron Expressions for jobs |
 | `-t`| `--test` | `false` | Run archive/export jobs in testing mode (without actual data transfer and items modification) |
 
-## How to Get Help?
+## How to Get Help
 If you have any troubles with running or configuring Listman.io there is several channels where you could get help:
 1. Read This (F*cking) Manual
 3. In case of any runtime errors (exceptions) look at the `app_folder\troubleshooting.log` file for detailed `Exception Stack Trace` and try to fix your config file or environment
