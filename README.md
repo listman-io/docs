@@ -1,10 +1,12 @@
-# Listman.io Docs
+# Listman.io - Auto Archive/Export SharePoint Lists and Document Libraries
+
+## Documentation
 
 **Listman.io** is a simple yet powerfully Windows Console Application that helps organizations auto archive or export data and documents from SharePoint Lists and Document Libraries of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) based of certain criteria.
 
 ![](https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png)
 
-#### Table of Contents  
+## Table of Contents  
 
 * [Why Your Business May Need Listman.io](#why-your-business-may-need-listmanio)
   + [Why Archive/Export to CSV](#why-archive-export-to-csv)
@@ -57,7 +59,7 @@ In short, Listman.io will allow your company to run business more efficiently an
 
 And if you are a SharePoint Consulting Microsoft Partner Listman.io will help you to implement client-side projects with better profit margin by saving money on custom archiving/export/migration requirements development.
 
-### Why Archive/Export to CSV
+### Why Archive/Export SharePoint Lists to CSV
 ... and not to MS SQL for example? 
 
 So, Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists and document libraries data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
