@@ -2,7 +2,7 @@
 
 ## Documentation
 
-**Listman.io** is a simple yet powerfully Windows Application that helps organizations auto archive and export data and attachments from SharePoint Lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) based of certain criteria.
+**Listman.io** is a simple yet powerfully Windows Console Application that helps organizations auto archive and export data and attachments from SharePoint Lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) based of certain criteria.
 
 ![](https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png)
 
@@ -448,8 +448,8 @@ The config file has some other additional parameters including logging, what lis
   },
   archiveJobs: [
     {
-      name: "Job 1",
-      list: "list2",
+      jobName: "Job 1",
+      listName: "list2",
       filterRecordsBy: {
         columnName: "Archived",
         equalBool: false
@@ -582,7 +582,7 @@ An `archiveJobs` object may contain the following properties and subsections:
 | Field/Subsection  | Description | Example |
 | ------------- | ------------- | -----------------|
 | `jobName` | Name of the job. Used for logging.  | Customers Archiving - May 2019 |
-| `list` | The title of a SharePoint list to archive/export | `customers` |
+| `listName` | The title of a SharePoint list to archive/export | `customers` |
 | `exportColumns` | List of column titles for archiving or export as JSON array of strings. Note: `ID` and `GUID` columns are mandatory and have to be in the list. | `["ID", "GUID", "Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
 | `exportAttachments` | Download list attachments. Default is `true`. | `true` or `false` |
 | `batchSize` | When Listman.io gets list data from Sharepoint lists it iterates through the list's data in batches or pages. The default `batchSize` value is `500`. We recommend to keep this value as 500 or lower if you have slow or unstable Internet connection | `500` |
@@ -655,16 +655,6 @@ Or if you want to archive all the records that have `Price` is equal `$100.99` :
 filterBy: {
   columnName: "Price",
   equalDouble: 100.99,
-}
-```
-
-
-Or if you want to archive all the `docx` documents that contains `_Alex_` in the `FileName`:
-```js
-filterBy: {
-  documentExt: "pdf",
-  columnName: "FileName",
-  containStr: "_Alex_",
 }
 ```
 
@@ -773,7 +763,7 @@ recordAction:{
 ```js
 archiveTo: {
   csvFile: "C:\\Work\\listman.cli\\listman-cli\\list1_archive.csv",
-  filesFolder: "C:\\Work\\listman.cli\\listman-cli\\attachments",
+  attachmentsFolder: "C:\\Work\\listman.cli\\listman-cli\\attachments",
   addHeaderToCSV: true,
   appendRecordsToCSV: false
 }
