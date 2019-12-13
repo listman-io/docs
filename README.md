@@ -1,8 +1,8 @@
-# Listman.io - Auto Archive/Export SharePoint Lists and Document Libraries
+# Listman.io is a SharePoint Lists Archive and Export Tool
 
 ## Documentation
 
-**Listman.io** is a simple yet powerfully Windows Console Application that helps organizations auto archive or export data and documents from SharePoint Lists and Document Libraries of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) based of certain criteria.
+**Listman.io** is a simple yet powerfully Windows Application that helps organizations auto archive and export data and attachments from SharePoint Lists of any size without annoying [5000 list view threshold](https://docs.microsoft.com/en-us/sharepoint/support/lists-and-libraries/items-exceeds-list-view-threshold) based of certain criteria.
 
 ![](https://user-images.githubusercontent.com/13550565/70306479-e872cd00-1841-11ea-9a44-26255be30a13.png)
 
@@ -48,7 +48,7 @@
 In short, Listman.io will allow your company to run business more efficiently and:
 
 1. Save money on custom SharePoint development (around one-two months of a developer salary), application support and maintenance 
-2. Avoid 5000 view and search limitation threshold for the large lists and document libraries in SharePoint by removing historical data, files and attachments
+2. Avoid 5000 view and search limitation threshold for the large lists in SharePoint by removing historical data and attachments
 3. Reduce hosting costs by offloading unused attachments or documents into the file system or any cloud storage including OneDrive, Dropbox, Google Drive or Azure Storage
 4. Improve overall system speed and responsiveness 
 5. Comply and implement custom organization’s data retention policies
@@ -62,7 +62,7 @@ And if you are a SharePoint Consulting Microsoft Partner Listman.io will help yo
 ### Why Archive/Export SharePoint Lists to CSV
 ... and not to MS SQL for example? 
 
-So, Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists and document libraries data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
+So, Listman.io is built upon the principles of Unix philosophy and designed to *do one thing very well*, namely to archive and export SharePoint lists data into the CSV format files (comma delimited). We use CSV files as a final data destination because:
 
 * CSV is understood by almost every piece of software on the planet (past and present)
 * CSV is more human-readable than XML, JSON formats 
@@ -117,13 +117,10 @@ Look at the table below to choose between Free or Enterprise Licenses.
 | ------------- | ------------- | -----------------|
 | Unlimited sites |  ✅ |  ✅ |
 | Unlimited lists |  ✅ |  ✅ |
-| Unlimited document libraries |  ✅ |  ✅ |
 | Unlimited jobs |  ✅ |  ✅ |
-| Support large lists/libraries archiving/exporting (over 5000 threshold)   |  ✅ |  ✅ |
-| Modify list/library items after archiving/export |  ✅ |  ✅ |
-| Delete list/library items after archiving/export |  ✅ |  ✅ |
+| Support large lists archiving/exporting (over 5000 threshold)   |  ✅ |  ✅ |
+| Delete list items after archiving/export |  ✅ |  ✅ |
 | Download list attachments |  ✅ |  ✅ |
-| Download library documents |  ✅ |  ✅ |
 | Run as CLI |  ✅ |  ✅ |
 | Run as Windows Service |  ✅ |  ✅ |
 | Cron Scheduler |  ✅ |  ✅ |
@@ -585,12 +582,11 @@ An `archiveJobs` object may contain the following properties and subsections:
 | Field/Subsection  | Description | Example |
 | ------------- | ------------- | -----------------|
 | `jobName` | Name of the job. Used for logging.  | Customers Archiving - May 2019 |
-| `listName` | The title of a SharePoint list or document library to archive | `customers` |
-| `libraryName` | The title of document library to archive | `customers` |
+| `list` | The title of a SharePoint list to archive/export | `customers` |
 | `exportColumns` | List of column titles for archiving or export as JSON array of strings. Note: `ID` and `GUID` columns are mandatory and have to be in the list. | `["ID", "GUID", "Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
-| `exportFiles` | Do we need to download list attachments or library documents? Default is `true`. | `true` or `false` |
+| `exportAttachments` | Download list attachments. Default is `true`. | `true` or `false` |
 | `batchSize` | When Listman.io gets list data from Sharepoint lists it iterates through the list's data in batches or pages. The default `batchSize` value is `500`. We recommend to keep this value as 500 or lower if you have slow or unstable Internet connection | `500` |
-| `filterBy` | This subsection is used to filter specific list or library records for archiving or export. You could specify what list records or library documents to archive or export using a criteria. Don't use that field or set it's value to `null` if you want to archive/export **all list items or library documents**. Default is `null`. | See [Filter By configuration]() for details |
+| `filterBy` | This subsection is used to filter specific list records for archiving or export. You could specify what list records to archive or export using a criteria. Don't use that field or set it's value to `null` if you want to archive/export **all list items**. Default is `null`. | See [Filter By configuration]() for details |
 | `recordAction` | You may want to delete or modify some fields of a record from the list after archiving. This subsection is used to configure post archive action for the record. | See [Record Action configuration]() for details |
 | `archiveTo` | This section is used to specify properties of the archiving or export output files like file path, adding header and file write modes like `append` or `rewrite` | See [Archive To configuration]() for details |
 | `schedule` | This section is used to specify job run schedule. Basically you could run jon immediately after application launch or by schedule using cron syntax. | See [Schedule configuration]() for details |
@@ -624,7 +620,7 @@ There are some errors that may be generated by the app if that section is filled
 
 #### `filterBy` subsection
 
-`filterBy` subsection is used to specify a simple equality condition under which record from the SharePoint list or library will be marked for archiving or export. Condition could be specified just for one column that has `number`, `string`, `bool`, `currency` or `datetime` type. For documents library you could also specify an extension of the files to download.
+`filterBy` subsection is used to specify a simple equality condition under which record from the SharePoint list will be marked for archiving or export. Condition could be specified just for one column that has `number`, `string`, `bool`, `currency` or `datetime` type.
 
 > If you want to archive/export all list items without filtering just **don't** provide `filterBy` in your config file.
 
@@ -699,7 +695,6 @@ filterBy: {
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
-| `documentExt` | Document file extension. Applicable only for document libraries. `null` by default | "docx" |
 | `columnName` | Column to apply condition to. Column has to have either `string` or `bool` or `DateTime` types  | "Published" |
 | `equalDouble` | Conditional value to match current value of the `currency` type column to. The record will be marked for archiving if values are equal. Note absence of any currency sign. | `98.99` |
 | `equalInt` | Conditional value to match current value of the `number` type column to. The record will be marked for archiving if values are equal. | `12` |
@@ -717,12 +712,12 @@ There are some errors that may be generated by the app if that section is filled
 
 #### `recordAction` subsection
 
-Once list or library record/document is archived or exported you may want to delete it or modify some of its fields. The `recordAction` subsection is designed to configure post archive action applied to the archived record.
+Once list record is archived or exported you may want to delete it or modify some of its fields. The `recordAction` subsection is designed to configure post archive action applied to the archived record.
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
-| `remove` | remove list item or library file after archiving, `false` by default  | `true` |
-| `modify` | List of modifications (JSON array) for one or more list/library item fields after archiving, `null` by default | `true` |
+| `remove` | remove list item after archiving, `false` by default  | `true` |
+| `modify` | List of modifications (JSON array) for one or more list item fields after archiving, `null` by default | `true` |
 
 `modify` is a JSON array that contains configuration for one or more list fields to edit:
 
@@ -770,10 +765,9 @@ recordAction:{
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
 | `csvFile` | The output CSV file  | `C:\\Work\\listman.cli\\listman-cli\\list1_archive.csv` |
-| `filesFolder` | The output folder for downloaded attachments or library documents. For list each attachment will be downloaded into a separate subfolder named by Item ID. For libraries the Item ID will be added as a postfix into the file name to prevent files with similar names from overwriting. Only latest version of each document will be downloaded. Look at the `keepFoldersStructure` setting below if you want to keep documents library folder structure  | `C:\\Work\\listman.cli\\listman-cli\\attachments` |
+| `attachmentsFolder` | The output folder for downloaded attachments. For list each attachment will be downloaded into a separate subfolder named by Item ID. Only latest version of each document will be downloaded. | `C:\\Work\\listman.cli\\listman-cli\\attachments` |
 | `addHeaderToCSV` | Add columns header to the CSV file. `true` by default. | `true` |
 | `appendRecordsToCSV` | Overwrite or append archived records into the CSV file if it exists. `true` by default. | `true` |
-| `keepLibraryFoldersStructure` | Set to `true` if you want to keep folders structure from the documents library, `false` if all the files could be copied in the one folder. `true` by default. | `true` |
 
 **Example**:
 ```js
