@@ -43,6 +43,22 @@
 * [Command Line Parameters](#command-line-parameters)
 * [How to Get Help](#how-to-get-help)
 
+## What is Listman.io App For?
+
+There are three main business cases when you could find Listman.io app helpful to your business:
+
+1. You need to archive SharePoint Lists Items with attachments based on some searching criteria into an external file or cloud storage. You want to run that task periodically using CRON schedule as a Windows Service. You want to delete or modify archived list item afterwards.
+
+2. You need to export large (more than 5000) SharePoint lists data (optionally with attachments) but can't do that using PowerShell, Excel, MS Access or Flow by some reason or just probably want to save your time. 
+
+3. You may just want to download all lists items from SharePoint lists, probably to back up them or move over (offload) from SharePoint.
+
+## What is Listman.io Not For?
+
+1. Listman.io is not a SharePoint Migration tool. You could try to use it for simple migration tasks but once exported you shall import the lists data using your own approach.
+2. Listman.io is not a SharePoint Back Up tool. It means once archived you can't easily restore and convert the lists data and attachment back to SharePoint.
+3. And obviously, Listman.io is not a SharePoint Reporting tool.
+
 ## Why Your Business May Need Listman.io
 
 In short, Listman.io will allow your company to run business more efficiently and:
@@ -55,7 +71,8 @@ In short, Listman.io will allow your company to run business more efficiently an
 6. Meet regulatory compliance without shortcuts
 7. Automatically back up old data and documents based on certain criteria
 8. Transfer or export lists data from SharePoint into any DB including MS SQL Server or Azure Database
-8. And finally, configure and run archiving or exporting procedures in no time without any custom development (around 30 mins after simple configuration)
+9. And finally, configure and run archiving or exporting procedures in no time without any custom development (around 30 mins after simple configuration)
+10. Development and other 3-rd party tools are costly for a small company. You could find Listman.io a perfect fit for a small organization or your consulting/freelancing business.
 
 And if you are a SharePoint Consulting Microsoft Partner Listman.io will help you to implement client-side projects with better profit margin by saving money on custom archiving/export/migration requirements development.
 
