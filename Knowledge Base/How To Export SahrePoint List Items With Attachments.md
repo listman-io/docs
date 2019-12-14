@@ -4,6 +4,7 @@ Once your organization has started to use SharePoint Online it's a very common t
 
 * Use SharePoint Designer (discontinued after 2013 release)
 * Use Microsoft WorkFlow
+* Use Stsadm.exe
 * Create PowerShell script
 * Code your own custom .NET application using CSOM
 * Use Microsoft Access

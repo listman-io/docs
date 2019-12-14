@@ -1,4 +1,4 @@
-# Listman.io is a SharePoint Lists Archive and Export Tool
+# Listman.io is a SharePoint Lists Auto Archive and Export Tool
 
 ## Documentation
 
