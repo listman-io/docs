@@ -158,9 +158,7 @@ If you want to run archiving or exporting procedures for large lists **without 5
 
 ## Create SharePoint Application (App-Only aka Application Context Principal)
 
-Now let's create your first SharePoint Application (also known as Application Context or App) that will be used to authorize Listman.io app against your Sharepoint Instance. 
-
-In order for the Listman.io app to have an access to all the lists and lists attachments we have to create an Application Context (or App-Only) and grant it the `fullcontroll` **right** for the chosen **scope**. You could [read](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs) about that procedure in more details on Microsoft Documentation Portal.
+Now let's create your first SharePoint Application (also known as Application Context Principal or App-Only) that will be used to authorize Listman.io app against your Sharepoint Instance. SharePoint App-Only is the older, but still very relevant, model of setting up app-principals. This model works for both SharePoint Online and SharePoint 2013/2016/2019. You could [read](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs) about that procedure in more details on Microsoft Docs Portal.
 
 For this example let's assume that your SharePoint Instance is available on `https://listman.sharepoint.com` url. To create Application Context for the Listman.io app:
 
