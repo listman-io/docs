@@ -414,7 +414,7 @@ Now let's look on the all configuration sections in details.
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
-| `email` | Your Microsoft Account email used to sign in on www.listman.io  | aershov24@gmail.com |
+| `email` | Your email used to Sign In on www.listman.io  | aershov24@gmail.com |
 | `siteUrl` | Url of your Sharepoint Instance  | https://listman.sharepoint.com |
 | `clientId` | Client Id generated for the Sharepoint application, created in the [Create SharePoint Application (App-Only/Application Context)]() section | `fe26fe8a-60b9-4523-996e-3e5ac2596e9f` |
 | `clientSecret` | Client Secret generated for the Sharepoint application, created in the [Create SharePoint Application (App-Only/Application Context)]() section | `mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI=` |
