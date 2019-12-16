@@ -1,1 +1,0 @@
-# How To Download SharePoint List Attachments Based On Certain Criteria With No Code
