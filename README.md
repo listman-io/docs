@@ -68,9 +68,8 @@ In short, Listman.io will allow your company to run business more efficiently an
 7. Automatically back up old data and documents based on certain criteria
 8. Transfer or export lists data from SharePoint into any DB including MS SQL Server or Azure Database
 9. And finally, configure and run archiving or exporting procedures in no time without any custom development (around 30 mins after simple configuration)
-10. Development and other 3-rd party tools are costly for a small company. You could find Listman.io a perfect fit for a small organization or your consulting/freelancing business.
 
-And if you are a SharePoint Consulting Microsoft Partner Listman.io will help you to implement client-side projects with better profit margin by saving money on custom archiving/export/migration requirements development.
+You could find that Listman.io is as a perfect fit for your small organization or your consulting/freelancing business. And if you are a SharePoint Consulting Microsoft Partner Listman.io will help you to implement client-side projects with better profit margin by saving money and bypassing custom archiving/export/migration requirements development.
 
 ### Why Archive/Export SharePoint Lists to CSV
 ... and not to MS SQL for example? 
