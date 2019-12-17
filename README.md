@@ -32,9 +32,11 @@
     - [`exportColumns` field](#-exportcolumns--field)
     - [`filterBy` subsection](#-filterby--subsection)
       * [`filterBy` with SharePoint Conditional Columns](#-filterby--with-sharepoint-conditional-columns)
-    - [`recordAction` subsection](#-recordaction--subsection)
+    - [`onRecordProcessed` subsection](#-recordaction--subsection)
     - [`archiveTo` subsection](#-archiveto--subsection)
     - [`schedule` section](#-schedule--section)
+    - [`onSuccess` section](#-schedule--section)
+    - [`onError` section](#-schedule--section)
 * [Note on Logging](#note-on-logging)
 * [Command Line Parameters](#command-line-parameters)
 * [How to Get Help](#how-to-get-help)
@@ -107,6 +109,8 @@ Listman.io app distributed as `zip` archive and don't need any additional instal
 <img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385120-e6397b80-19c5-11ea-9291-36aebedfb3cd.png" alt="drawing" width="200"/>
 
 3. Click on **Download Listman.io App** button and save the archive somewhere on your application server
+
+4. Once Signed In you'll get an email with `appKey`. You could always find your `appKey` on your **Dashboard**.
 
 Alternatively you could download the latest and all the previous versions of the Listman.io application using that [link](https://github.com/listman-io/docs/packages) from the Github. 
 
@@ -232,14 +236,14 @@ Now let's quickly validate that we could connect Listman.io app to your SharePoi
 3. Navigate to **app folder** using Windows Explorer
 4. Open the `config.json` file in any text editor of your choice
 5. Make sure your know:
- * your `sign in email`
+ * your `appKey`, you can check it in your Dashboard
  * `clientId` for the SharePoint app from step 4, section [Create SharePoint Application](#create-sharepoint-application-app-onlyapplication-context)
  * `clientSecret` for the SharePoint app from step 4, section [Create SharePoint Application](#create-sharepoint-application-app-onlyapplication-context)
 5. Edit the `config.json` file. Change the fields to your specific values and **Save** the file:
 
 ```js
 connectTo: {
-  email: "your_sign@in_email.com",
+  appKey: "listman-****-io",
   siteUrl:"https://yourcompany.sharepoint.com/",
   clientId: "clientId_for_sharepoint_app",
   clientSecret: "clientSecret_for_sharepoint_app"
@@ -350,7 +354,7 @@ The config file has some other additional parameters like what columns to archiv
 ```js
 {
   connectTo: {
-    email: "listman.io@gmail.com",
+    appKey: "listman-****-io",
     siteUrl:"https://listman.sharepoint.com/",
     clientId: "fe26fe8a-60b9-4523-996e-3e5ac2596e9f",
     clientSecret: "mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI="
@@ -365,7 +369,7 @@ The config file has some other additional parameters like what columns to archiv
       },
       exportColumns: ["Title", "col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"],
       exportAttachments: true,
-      recordAction:{
+      onRecordProcessed:{
         remove: true
       },
       archiveTo: {
@@ -378,7 +382,15 @@ The config file has some other additional parameters like what columns to archiv
         runImmidiate: false,
         runUsingCron: "0 0/2 * * * ?"
       },
-      batchSize: 200
+      batchSize: 200,
+      onSuccess: {
+        runProcess: "C:\\Tools\\zip.bat",
+        callUrl: "https:\\archive.api.com\\sendSuccessEmail"
+      },
+      onError: {
+        runProcess: null
+        callUrl: "https:\\archive.api.com\\sendErrorEmail"
+      }
     }
   ]
 }
@@ -448,10 +460,12 @@ An `archiveJobs` object may contain the following properties and subsections:
 | `exportColumns` | List of column titles for archiving or export as JSON array of strings. | `["Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
 | `exportAttachments` | Download list attachments. Default is `true`. | `true` or `false` |
 | `batchSize` | When Listman.io gets list data from Sharepoint lists it iterates through the list's data in batches or pages. The default `batchSize` value is `500`. We recommend to keep this value as 500 or lower if you have slow or unstable Internet connection | `500` |
-| `filterBy` | This subsection is used to filter specific list records for archiving or export. You could specify what list records to archive or export using a criteria. Don't use that field or set it's value to `null` if you want to archive/export **all list items**. Default is `null`. | See [Filter By configuration]() for details |
-| `recordAction` | You may want to delete or modify some fields of a record from the list after archiving. This subsection is used to configure post archive action for the record. | See [Record Action configuration]() for details |
-| `archiveTo` | This section is used to specify properties of the archiving or export output files like file path, adding header and file write modes like `append` or `rewrite` | See [Archive To configuration]() for details |
-| `schedule` | This section is used to specify job run schedule. Basically you could run jon immediately after application launch or by schedule using cron syntax. | See [Schedule configuration]() for details |
+| `filterBy` | This subsection is used to filter specific list records for archiving or export. You could specify what list records to archive or export using a criteria. Don't use that field or set it's value to `null` if you want to archive/export **all list items**. Default is `null`. | See [filterBy subsection]() for details |
+| `onRecordProcessed` | You may want to delete or modify some fields of a record from the list after archiving. This subsection is used to configure post archive action for the record. | See [onRecordProcessed  subsection]() for details |
+| `archiveTo` | This section is used to specify properties of the archiving or export output files like file path, adding header and file write modes like `append` or `rewrite` | See [archiveTo subsection]() for details |
+| `schedule` | This section is used to specify job run schedule. Basically you could run jon immediately after application launch or by schedule using cron syntax. | See [Schedule subsection]() for details |
+| `onSuccess` | This section specifies what application to run or web call to invoke once the job was successfully processed. You could use that section to automate post archiving/exporting actions like run additional data migration/compressing tools, send emails or Slack messages or call Zapier or MS Flow Integrations | See [onSuccess subsection]() for details |
+| `onError` | This section specifies what application to run or web call to invoke once the job was processed with error. You could use that section to automate house keeping actions, send error emails or Slack messages or call Zapier or MS Flow Integrations | See [onError subsection]() for details |
 
 #### `exportColumns` field
 `exportColumns` field should contain a list of column titles for archiving or export as JSON array of strings. Note that `ID` and `GUID` of the item will be always presented in the output CSV file. To export all columns you could use special `*` shortcut (see example below).
@@ -542,9 +556,9 @@ filterBy: {
 | `equalBool` | Conditional value to match current value of the `bool` type column to. The record will be marked for archiving if values are equal. | `true` or `false` |
 | `olderThanDays` | Conditional value to match current value of the `datetime` type column to. The record will be marked for archiving if column value are older than `olderThanDays` days. | `30` |
 
-#### `recordAction` subsection
+#### `onRecordProcessed` subsection
 
-Once list record is archived or exported you may want to delete it or modify some of its fields. The `recordAction` subsection is designed to configure post archive action applied to the archived record.
+Once list record is archived or exported you may want to delete it or modify some of its fields. The `onRecordProcessed` subsection is designed to configure post archive action applied to the archived record.
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
@@ -571,7 +585,7 @@ In this example archived record would not be removed from the list. After archiv
 * `ArchiveDate` field will be set to the current date 
 
 ```js
-recordAction:{
+onRecordProcessed:{
   remove: false,
   modify: [
      {
@@ -635,6 +649,75 @@ run the job **each first day of each month at 12 am**:
 schedule: {
   runImmediate: false,
   runUsingCron: "0 0 12 1 1/1 ? *"
+}
+```
+
+#### `onSuccess` section
+Once archiving or export job is done you may want to execute some additional tools or scripts to make some actions on the resulted CSV and attachment files. For example you may want to rename the resulted CSV file and then compress it using gzip. Or may be you want to send a message into your Teams channel using MS Flow, Zapier or your internal Web API.
+
+| Field  | Description | Example |
+| ------------- | ------------- | -----------------|
+| `runProcess` | Path to the exe/script to run (using `cmd`) | `C:\tools\gzip.bat` |
+| `callUrl` | Send POST request to URL. See the request `body` format below. | `https://api.internal.com/sendListmanEmail`|
+
+**`callUrl` POST request body format**
+
+```js
+{
+  "jobName": "Job 1",
+  "listName": "List 1",
+  "startedAt": 
+  "finishedAt": 
+  "recordsProcessed": "12134"
+  "csvFile": ""
+  "attachmentsFolder": ""
+}
+```
+
+**Example:**
+Call `gzip.bat` script:
+```js
+onSuccess: {
+  runProcess: "C:\\tools\\gzip.bat"
+}
+```
+or call `https://api.internal.com/sendListmanEmail` endpoint:
+```js
+onSuccess: {
+  callUrl: "https://api.internal.com/sendListmanEmail"
+}
+```
+
+#### `onError` section
+Once archiving or export job has failed with error you may want to execute some additional tools or scripts to make some actions or send a warning email message.
+
+| Field  | Description | Example |
+| ------------- | ------------- | -----------------|
+| `runProcess` | Path to the exe/script to run (using `cmd`) | `C:\tools\gzip.bat` |
+| `callUrl` | Send POST request to URL. See the request `body` format below. | `https://api.internal.com/sendErrorEmail`|
+
+**`callUrl` POST request body format**
+
+```js
+{
+  "jobName": "Job 1",
+  "listName": "List 1",
+  "startedAt": 
+  "errorMessage: ""
+}
+```
+
+**Example:**
+Call `cleanup.bat` script:
+```js
+onError: {
+  runProcess: "C:\\tools\\cleanup.bat"
+}
+```
+or call `https://api.internal.com/sendErrorEmail` endpoint:
+```js
+onError: {
+  callUrl: "https://api.internal.com/sendErrorEmail"
 }
 ```
 
