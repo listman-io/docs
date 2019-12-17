@@ -92,7 +92,7 @@ Before start let's make sure your system complies with the following system requ
 2. You should have a Microsoft or Google Account to Sign In for the service
 2. To run Listman.io as command line application or Windows Service you must have Windows 7/8/10/Server 2008/2012/2016 system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine as the **application server**.
 3. You have .NET Framework 4.7.1 installed on the application server. **Note:** .NET Core is not yet supported*.
-4. Your application server must be connected to the Internet. Without the internet connection Listman.io app wouldn't be able to verify your *sign in email*.
+4. Your application server must be connected to the Internet. Without the internet connection Listman.io app wouldn't be able to verify your *appKey*.
 5. Ideally you should to have some knowledge of JSON files, usage of Windows Command Line, CRON expressions syntax, Windows Services, and specifically `sc` command but it's all optional.
 
 > **\* What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
@@ -424,7 +424,7 @@ Now let's look on the all configuration sections in details.
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
-| `email` | Your email used to Sign In on www.listman.io  | aershov24@gmail.com |
+| `appKey` | Your appKey from Dashboard  | `listman-*****-io` |
 | `siteUrl` | Url of your Sharepoint Instance  | https://listman.sharepoint.com |
 | `clientId` | Client Id generated for the Sharepoint application, created in the [Create SharePoint Application (App-Only/Application Context)]() section | `fe26fe8a-60b9-4523-996e-3e5ac2596e9f` |
 | `clientSecret` | Client Secret generated for the Sharepoint application, created in the [Create SharePoint Application (App-Only/Application Context)]() section | `mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI=` |
@@ -432,8 +432,8 @@ Now let's look on the all configuration sections in details.
 **Example**:
 ```js
 connectTo: {
-  email: "listman.io@gmail.com",
-  siteUrl:"https://listman.sharepoint.com/",
+  appKey: "listman-*****-io",
+  siteUrl: "https://listman.sharepoint.com/",
   clientId: "fe26fe8a-60b9-4523-996e-3e5ac2596e9f",
   clientSecret: "mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI="
 }
@@ -544,7 +544,6 @@ filterBy: {
   equalStr: "ARCHIVE",
 }
 ```
-
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
