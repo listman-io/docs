@@ -90,7 +90,8 @@ Before start let's make sure your system complies with the following system requ
 
 1. You have an instance of SharePoint 2013/2016/2019 or SharePoint Online
 2. You should have a Microsoft or Google Account to Sign In for the service
-2. To run Listman.io as command line application or Windows Service you must have Windows 7/8/10/Server 2008/2012/2016 system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine as the **application server**.
+2. To run Listman.io as command line application or Windows Service you shoul have Windows 7/8/10/Server 2008/2012/2016 system installed on one of your local machines or cloud VM. For simplicity we will reference to the machine as the **application server**.
+> Theoretically you can run Listman.io app using Azure Worker Role or Azure Functions. For more information on how to do that look at [this article](https://docs.microsoft.com/en-us/samples/azure-samples/functions-dotnet-migrating-console-apps/run-console-apps-on-azure-functions/) from Microsoft.
 3. You have .NET Framework 4.7.1 installed on the application server. **Note:** .NET Core is not yet supported*.
 4. Your application server must be connected to the Internet. Without the internet connection Listman.io app wouldn't be able to verify your *appKey*.
 5. Ideally you should to have some knowledge of JSON files, usage of Windows Command Line, CRON expressions syntax, Windows Services, and specifically `sc` command but it's all optional.
@@ -464,7 +465,7 @@ An `archiveJobs` object may contain the following properties and subsections:
 | `onRecordProcessed` | You may want to delete or modify some fields of a record from the list after archiving. This subsection is used to configure post archive action for the record. | See [onRecordProcessed  subsection]() for details |
 | `archiveTo` | This section is used to specify properties of the archiving or export output files like file path, adding header and file write modes like `append` or `rewrite` | See [archiveTo subsection]() for details |
 | `schedule` | This section is used to specify job run schedule. Basically you could run jon immediately after application launch or by schedule using cron syntax. | See [Schedule subsection]() for details |
-| `onSuccess` | This section specifies what application to run or web call to invoke once the job was successfully processed. You could use that section to automate post archiving/exporting actions like run additional data migration/compressing tools, send emails or Slack messages or call Zapier or MS Flow Integrations | See [onSuccess subsection]() for details |
+| `onSuccess` | This section specifies what application to run or web call to invoke once the job was successfully processed. You could use that section to automate post archiving/exporting actions like run additional data migration/compressing tools, send emails or Slack messages or call Azure Functions, Zapier, MS Flow Integrations | See [onSuccess subsection]() for details |
 | `onError` | This section specifies what application to run or web call to invoke once the job was processed with error. You could use that section to automate house keeping actions, send error emails or Slack messages or call Zapier or MS Flow Integrations | See [onError subsection]() for details |
 
 #### `exportColumns` field
