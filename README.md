@@ -385,12 +385,12 @@ The config file has some other additional parameters like what columns to archiv
       },
       batchSize: 200,
       onSuccess: {
-        runProcess: "C:\\Tools\\zip.bat",
-        callUrl: "https:\\archive.api.com\\sendSuccessEmail"
+        runProcess: "C:\\Tools\\postArchive.bat",
+        callUrl: "https://localhost:3000/onSuccess"
       },
       onError: {
         runProcess: null
-        callUrl: "https:\\archive.api.com\\sendErrorEmail"
+        callUrl: "https://localhost:3000/onError"
       }
     }
   ]
