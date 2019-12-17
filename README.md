@@ -657,10 +657,15 @@ Once archiving or export job is done you may want to execute some additional too
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
-| `runProcess` | Path to the exe/script to run (using `cmd`) | `C:\tools\gzip.bat` |
+| `runProcess` | Path to the exe/script to run | `C:\tools\gzip.bat` |
 | `callUrl` | Send POST request to URL. See the request `body` format below. | `https://api.internal.com/sendListmanEmail`|
 
-**`callUrl` POST request body format**
+**`onSuccess.callUrl` POST Request Format**
+Each POST requests contains a custom `X-LISTMAN-APP-KEY` header with your unique `appKey` value that you could use for request authentication:
+
+```
+X-LISTMAN-APP-KEY: listman-*****-io
+```
 
 ```js
 {
@@ -693,11 +698,18 @@ Once archiving or export job has failed with error you may want to execute some 
 
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
-| `runProcess` | Path to the exe/script to run (using `cmd`) | `C:\tools\gzip.bat` |
+| `runProcess` | Path to the exe/script to run | `C:\tools\gzip.bat` |
 | `callUrl` | Send POST request to URL. See the request `body` format below. | `https://api.internal.com/sendErrorEmail`|
 
-**`callUrl` POST request body format**
+**`onError.callUrl` POST Request Format**
 
+Each POST requests contains a custom `X-LISTMAN-APP-KEY` header with your unique `appKey` value that you could use for request authentication:
+
+```
+X-LISTMAN-APP-KEY: listman-*****-io
+```
+
+The body of the POST request contains the following data:
 ```js
 {
   "jobName": "Job 1",
