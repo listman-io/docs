@@ -139,8 +139,8 @@ Look at the table below to choose between Free or Business Plan.
 | Unlimited sites |  ✅ |  ✅ |
 | Unlimited lists |  ✅ |  ✅ |
 | Unlimited jobs |  ✅ |  ✅ |
-| Delete list items after archiving/export |  ✅ |  ✅ |
-| Download list attachments |  ✅ |  ✅ |
+| Delete/modify list items after archiving/export |  ✅ |  ✅ |
+| Download attachments |  ✅ |  ✅ |
 | Run as CLI |  ✅ |  ✅ |
 | Run as Windows Service |  ✅ |  ✅ |
 | Cron Scheduler |  ✅ |  ✅ |
@@ -365,7 +365,7 @@ The config file has some other additional parameters like what columns to archiv
 {
   connectTo: {
     appKey: "listman-****-io",
-    siteUrl:"https://listman.sharepoint.com/",
+    siteUrl:"https://listman.sharepoint.com",
     clientId: "fe26fe8a-60b9-4523-996e-3e5ac2596e9f",
     clientSecret: "mVhELni3mB5n5moBeav4e9sKpq+s1ylV+vU0MFyWjAI="
   },
@@ -378,12 +378,23 @@ The config file has some other additional parameters like what columns to archiv
         equalBool: false
       },
       exportColumns: ["Title", "col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"],
-      exportAttachments: true,
+      downloadAttachments: true,
       onRecordProcessed:{
-        remove: true
+        remove: false,
+        modify: [
+          {
+            columnName: "Archived",
+            setBoolValue: true,
+          },
+          {
+            columnName: "ArchivedDate",
+            setCurrentDateValue: true
+          }
+        ]
       },
       archiveTo: {
         csvFile: "C:\\Work\\listman.cli\\listman-cli\\list1_archive.csv",
+        csvAttachmentsFile: "C:\\Work\\listman.cli\\listman-cli\\list1_attachments.csv",
         attachmentsFolder: "C:\\Work\\listman.cli\\listman-cli\\attachments",
         addHeaderToCSV: true,
         appendRecordsToCSV: false
@@ -395,11 +406,11 @@ The config file has some other additional parameters like what columns to archiv
       batchSize: 200,
       onSuccess: {
         runProcess: "C:\\Tools\\postArchive.bat",
-        callUrl: "https://localhost:3000/onSuccess"
+        callUrl: "https://localhost:3000/sendEmailOnSuccess"
       },
       onError: {
         runProcess: null
-        callUrl: "https://localhost:3000/onError"
+        callUrl: "https://localhost:3000/sendEmailOnError"
       }
     }
   ]
@@ -468,7 +479,7 @@ An `archiveJobs` object may contain the following properties and subsections:
 | `jobName` | Name of the job. Used for logging.  | Customers Archiving - May 2019 |
 | `listName` | The title of a SharePoint list to archive/export | `customers` |
 | `exportColumns` | List of column titles for archiving or export as JSON array of strings. | `["Title","col1", "col2", "Published", "Bool", "Archived", "ArchivedDate"]` |
-| `exportAttachments` | Download list attachments. Default is `true`. | `true` or `false` |
+| `downloadAttachments` | Download list attachments. Default is `true`. | `true` or `false` |
 | `batchSize` | When Listman.io gets list data from Sharepoint lists it iterates through the list's data in batches or pages. The default `batchSize` value is `500`. We recommend to keep this value as 500 or lower if you have slow or unstable Internet connection | `500` |
 | `filterBy` | This subsection is used to filter specific list records for archiving or export. You could specify what list records to archive or export using a criteria. Don't use that field or set it's value to `null` if you want to archive/export **all list items**. Default is `null`. | See [filterBy subsection]() for details |
 | `onRecordProcessed` | You may want to delete or modify some fields of a record from the list after archiving. This subsection is used to configure post archive action for the record. | See [onRecordProcessed  subsection]() for details |
@@ -620,6 +631,7 @@ onRecordProcessed:{
 | Field  | Description | Example |
 | ------------- | ------------- | -----------------|
 | `csvFile` | The output CSV file  | `C:\\Work\\listman.cli\\listman-cli\\list1_archive.csv` |
+| `csvAttachmentsFile` | The output CSV file with attachments Urls and downloaded file paths  | `C:\\Work\\listman.cli\\listman-cli\\list1_attachments.csv` |
 | `attachmentsFolder` | The output folder for downloaded attachments. For list each attachment will be downloaded into a separate subfolder named by Item ID. Only latest version of each document will be downloaded. | `C:\\Work\\listman.cli\\listman-cli\\attachments` |
 | `addHeaderToCSV` | Add columns header to the CSV file. `true` by default. | `true` |
 | `appendRecordsToCSV` | Overwrite or append archived records into the CSV file if it exists. `true` by default. | `true` |
@@ -628,6 +640,7 @@ onRecordProcessed:{
 ```js
 archiveTo: {
   csvFile: "C:\\Work\\listman.cli\\listman-cli\\list1_archive.csv",
+  csvAttachmentsFile: "C:\\Work\\listman.cli\\listman-cli\\list1_attachments.csv",
   attachmentsFolder: "C:\\Work\\listman.cli\\listman-cli\\attachments",
   addHeaderToCSV: true,
   appendRecordsToCSV: false
