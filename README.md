@@ -103,19 +103,23 @@ Listman.io app distributed as `zip` archive and don't need any additional instal
 
 1. Go to [www.listman.io](https://www.listman.io)
 
-![image](https://user-images.githubusercontent.com/13550565/70397333-57bc0d00-1a4c-11ea-87d2-0079a10f3844.png)
+![image](https://user-images.githubusercontent.com/58321045/71055571-1be21f80-2191-11ea-8c4f-4f3b4e943279.png)
 
-2. Click on **Sign In with Microsoft**. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
+2. Click on **Sign In** with Microsoft or Goolge Account. After successfully Sign In you'll redirected to your [Dashboard](https://www.listman.io/dashboard)
 
-<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385120-e6397b80-19c5-11ea-9291-36aebedfb3cd.png" alt="drawing" width="200"/>
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/58321045/71055591-33210d00-2191-11ea-8b9a-61f741762387.png" alt="drawing" width="200"/>
 
 3. Click on **Download Listman.io App** button and save the archive somewhere on your application server
 
-4. Once Signed In you'll get an email with `appKey`. You could always find your `appKey` on your **Dashboard**.
+<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385126-01a48680-19c6-11ea-8859-b83cf2f5992a.png" alt="drawing" width="400"/>
+
+4. Once Signed In note the `appKey` in **Dashboard**. We will need it on a configuration step.
+
+![image](https://user-images.githubusercontent.com/58321045/71055635-5cda3400-2191-11ea-8a8f-2e0929b05ae5.png)
+
 
 Alternatively you could download the latest and all the previous versions of the Listman.io application using that [link](https://github.com/listman-io/docs/packages) from the Github. 
 
-<img style="display: block; margin: 0 auto;" src="https://user-images.githubusercontent.com/13550565/70385126-01a48680-19c6-11ea-8859-b83cf2f5992a.png" alt="drawing" width="400"/>
 
 > **Note:** Even if the app is downloaded from the Github you still need to Sign In with your Microsoft account on [www.listman.io](https://www.listman.io) to obtain your Free License details.
 
@@ -149,11 +153,16 @@ Look at the table below to choose between Free or Business Plan.
 
 If you want to run archiving or exporting procedures for large lists **without 500 items limitation** you have to subscribe to a Business Plan. For that:
 1. Go to [www.listman.io](https://www.listman.io)
-2. Sign In with your Microsoft Account email.
+2. **Sign In** with your Microsoft or Google Account email.
 3. Go to Billing details section and add details of your credit or debit card. 
-4.  Make sure there is no errors and click **Update** twice. Once your billing details is saved you'll see a green label `Business Plan is Active`. Once billing details are provided for the first time your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
 
-![image](https://user-images.githubusercontent.com/13550565/70397403-d749dc00-1a4c-11ea-9d03-8e3076d19a21.png)
+![image](https://user-images.githubusercontent.com/58321045/71055822-fbff2b80-2191-11ea-9035-69c6002a4748.png)
+
+4. Make sure there is no errors and click **Update** twice. Once your billing details is saved you'll see a green label `Provided` and your plan will changed to **Business**. 
+
+![image](https://user-images.githubusercontent.com/58321045/71055793-e7bb2e80-2191-11ea-8fbd-9fcd500ca8b4.png)
+
+Once billing details are provided for the first time your card will be billed immediately. Make sure you have sufficient funds available on your card each month so your subscription will stay active.
 
 > **Note:** We never store your billing detail on our servers. All the billing information and payments processed by Stripe.
 
