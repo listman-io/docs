@@ -99,7 +99,7 @@ Before start let's make sure your system complies with the following system requ
 > **\* What about .NET Core?** Unfortunately by the time of application implementation Microsoft didn't yet release .NET Standart CSOM libraries compatible with .NET Core runtime environment. We will keep our eye on that matter and plan to implement .NET version of the Listman.io app as soon as CSOM will be available for .NET Core.
 
 ## Download the App
-> By Downloading The App or Signing Up you are agree to the Terms Of Service.
+> By Downloading The App or Signing Up you are agree to the [Terms Of Service](https://www.listman.io/kb/tos).
 
 Listman.io app distributed as `zip` archive and don't need any additional installation except unzipping. It's very easy to download a copy of the Listman.io application:
 
