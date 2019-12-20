@@ -45,11 +45,13 @@
 
 There are three main business cases when you could find Listman.io app helpful for your business:
 
-1. You need to archive SharePoint Lists Items with attachments based on some searching criteria into an external file or cloud storage. You want to run that task periodically using CRON schedule as a Windows Service. You want to delete or modify archived list item afterwards.
+1. You need to **archive SharePoint Lists Items** with attachments based on some searching criteria into an external file or cloud storage. You want to run that task periodically using CRON schedule as a Windows Service. You want to delete or modify archived list item afterwards.
 
-2. You need to export large (more than 5000) SharePoint lists data (optionally with attachments) but can't do that using PowerShell, Excel, MS Access or Flow by some reason or just probably want to save your time. 
+2. You need to **export large (more than 5000) SharePoint lists** data (optionally with attachments) but can't do that using PowerShell, Excel, MS Access or Flow by some reason or just probably want to save your time. 
 
-3. You may just want to download all lists items from SharePoint lists, probably to back up them or move over (offload) from SharePoint.
+3. You may just want to **download all lists items from SharePoint lists**, probably to back up them or move over (offload) from SharePoint to file system or Azure Storage.
+
+4. You want to **automatically sync SharePoint lists data with MS SQL Server or Azure SQL tables** based on some search criteria and looking for an easiest way to do that with no code.
 
 ## What Listman.io Is Not For
 
